@@ -16,7 +16,7 @@
  * Author URI: https://rdev.cc/
  * License: MPL-2.0
  * License URI: https://opensource.org/licenses/MPL-2.0
- * Version: 1.2.0
+ * Version: 1.2.4
  * Text Domain: wc_poczta
  * Domain Path: /languages
  */
@@ -27,7 +27,7 @@ defined('ABSPATH') or die('No script kiddies please!');
 
 $pluginPath = plugin_dir_path(__FILE__);
 
-if(defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor/autoload.php')) {
+if (defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor/autoload.php')) {
   require_once $pluginPath . 'vendor/autoload.php';
 }
 
@@ -35,4 +35,4 @@ require_once $pluginPath . 'code/core/' . 'Bootstrap.php';
 require_once $pluginPath . 'code/core/' . 'Actions.php';
 require_once $pluginPath . 'code/core/' . 'ShippingRegistrar.php';
 
-\WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__));
+\WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.2.109');

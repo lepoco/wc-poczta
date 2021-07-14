@@ -17,8 +17,6 @@ final class Bootstrap
 
   public const PREFIX = 'wc_poczta_';
 
-  public const VERSION = '1.2.0';
-
   public const SHIPPING_PATH = 'code\\core\\ShippingMethod.php';
 
   public const SHIPPING_NAMESPACE = '\\WCPoczta\\Code\\Core\\ShippingMethod';
@@ -26,6 +24,8 @@ final class Bootstrap
   public const COMPONENTS_PATH = 'code\\components\\';
 
   public const COMPONENTS_NAMESPACE = '\\WCPoczta\\Code\\Components\\';
+
+  private $version = '';
 
   private $pluginPath = '';
 
@@ -41,7 +41,7 @@ final class Bootstrap
   /**
    * @param ?string $assetPath Path to the searched file
    */
-  public function getPluginAsset($assetPath = null): string
+  public function getPluginAsset(?string $assetPath = null): string
   {
     $pluginUrl = $this->getPluginUrl();
 
@@ -67,14 +67,19 @@ final class Bootstrap
     return $basePath . $subPath;
   }
 
-  public function getPluginUrl(): string
+  public function getPluginUrl(): ?string
   {
     return $this->pluginUrl;
   }
 
-  public static function init($pluginPath, $pluginUrl): self
+  public function getVersion(): ?string
   {
-    return (new self())->initialize($pluginPath, $pluginUrl);
+    return $this->version;
+  }
+
+  public static function init(?string $pluginPath, ?string $pluginUrl, ?string $version = null): self
+  {
+    return (new self())->initialize($pluginPath, $pluginUrl, $version);
   }
 
   public static function isDebug(): bool
@@ -82,7 +87,7 @@ final class Bootstrap
     return defined('WP_DEBUG') && WP_DEBUG;
   }
 
-  public static function camelToSnake($input): string
+  public static function camelToSnake(?string $input): string
   {
     preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
     $ret = $matches[0];
@@ -94,10 +99,14 @@ final class Bootstrap
     return implode('_', $ret);
   }
 
-  private function initialize($pluginPath, $pluginUrl): self
+  private function initialize(?string $pluginPath, ?string $pluginUrl, ?string $version = null): self
   {
     $this->pluginPath = $pluginPath;
     $this->pluginUrl = $pluginUrl;
+
+    if (null !== $version) {
+      $this->version = $version;
+    }
 
     $this->setupDomain();
     $this->setupMethods();

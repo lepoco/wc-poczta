@@ -64,10 +64,10 @@ final class Actions
 
     //https://pp-widget.silk-sh.eu/widget/scripts/ppwidget.js
 
-    wp_enqueue_style('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/css/easypack.css', [], Bootstrap::VERSION);
-    wp_enqueue_script('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/js/sdk-for-javascript.js', [], Bootstrap::VERSION, true);
-    wp_enqueue_script('cdn-wcpoczta-pocztapolska', 'https://mapa.ecommerce.poczta-polska.pl/widget/scripts/ppwidget.js', [], Bootstrap::VERSION, true);
-    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('assets/js/wc-poczta.min.js'), [], Bootstrap::VERSION, true);
+    wp_enqueue_style('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/css/easypack.css', [], $this->bootstrap->getVersion());
+    wp_enqueue_script('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/js/sdk-for-javascript.js', [], $this->bootstrap->getVersion(), true);
+    wp_enqueue_script('cdn-wcpoczta-pocztapolska', 'https://mapa.ecommerce.poczta-polska.pl/widget/scripts/ppwidget.js', [], $this->bootstrap->getVersion(), true);
+    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('assets/js/wc-poczta.min.js'), [], $this->bootstrap->getVersion(), true);
   }
 
   public function FrontHead(): void
@@ -82,9 +82,9 @@ final class Actions
 
     $data = [
       'uri' => 'https://rdev.cc/',
-      'version' => Bootstrap::VERSION,
       'prefix' => Bootstrap::PREFIX,
       'domain' => Bootstrap::DOMAIN,
+      'version' => $this->bootstrap->getVersion(),
       'methods' => $this->methodsIds,
     ];
 
@@ -302,8 +302,8 @@ final class Actions
     $html = null;
     //$html = 'te dane są ze starej wersji wtyczki';
 
-    if(null !== $html) {
-      $html .= '<p style="color:#777;"><small>'.__('Above information comes from the old plugin version. This data may disappear during future updates.', Bootstrap::DOMAIN).'</small><br><a href="https://wordpress.org/plugins/wc-poczta/">wordpress.org/plugins/wc-poczta</a></p>';
+    if (null !== $html) {
+      $html .= '<p style="color:#777;"><small>' . __('Above information comes from the old plugin version. This data may disappear during future updates.', Bootstrap::DOMAIN) . '</small><br><a href="https://wordpress.org/plugins/wc-poczta/">wordpress.org/plugins/wc-poczta</a></p>';
     }
     return $html;
   }

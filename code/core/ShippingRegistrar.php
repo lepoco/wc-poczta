@@ -21,6 +21,7 @@ final class ShippingRegistrar
 
   private $methodName = '';
 
+
   private $methodClassName = '';
 
   public static function register($bootstrap, $id, $method): self

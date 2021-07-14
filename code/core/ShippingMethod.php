@@ -162,7 +162,7 @@ abstract class ShippingMethod extends WC_Shipping_Method
 
   protected function getPluginTip(): string
   {
-    $tipHtml = '<strong>WC POCZTA</strong><br><small>v.' . Bootstrap::VERSION . '</small><br><br>';
+    $tipHtml = '<strong>WC POCZTA</strong><br><br>';
     $tipHtml .= __('This plugin is free, but it takes time to add new features and fix bugs.', Bootstrap::DOMAIN);
     $tipHtml .= '<br>';
     $tipHtml .= __('If you want to support us and speed up the development of the plugin, contact us.', Bootstrap::DOMAIN);
