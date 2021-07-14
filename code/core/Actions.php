@@ -67,7 +67,7 @@ final class Actions
     wp_enqueue_style('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/css/easypack.css', [], Bootstrap::VERSION);
     wp_enqueue_script('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/js/sdk-for-javascript.js', [], Bootstrap::VERSION, true);
     wp_enqueue_script('cdn-wcpoczta-pocztapolska', 'https://mapa.ecommerce.poczta-polska.pl/widget/scripts/ppwidget.js', [], Bootstrap::VERSION, true);
-    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('js/wc-poczta.min.js'), [], Bootstrap::VERSION, true);
+    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('assets/js/wc-poczta.min.js'), [], Bootstrap::VERSION, true);
   }
 
   public function FrontHead(): void
