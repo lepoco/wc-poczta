@@ -88,7 +88,7 @@ final class Actions
       'methods' => $this->methodsIds,
     ];
 
-    echo '<style type="text/css">.wc-poczta__button {width: 100%;;margin-bottom: 15px} .wc-poczta, .wc-poczta-input, .wc-poczta-input > input {width: 100%;}.wc-poczta__container {margin-bottom:20px;}</style>';
+    echo '<style type="text/css">.wc-poczta__button {width: 100%;;margin-bottom: 15px} .wc-poczta, .wc-poczta-input, .wc-poczta-input > input {width: 100%;} .wc-poczta__container {margin-bottom:20px;}</style>';
     echo '<script type="text/javascript">const WCPOCZTA = ' . json_encode($data, JSON_UNESCAPED_UNICODE) . '</script>';
   }
 
@@ -215,7 +215,7 @@ final class Actions
 
   public function metaAdmin($post): void
   {
-    echo '<style type="text/css">#woocommerce-order-wcpoczta>.postbox-header{display:none}#woocommerce-order-wcpoczta .inside{padding:23px 24px;}</style>';
+    echo '<style type="text/css">#woocommerce-order-wcpoczta>.postbox-header{display:none}#woocommerce-order-wcpoczta .inside{padding:23px 24px;margin:0;}</style>';
 
     $__bc = $this->__backwardCompatibility($post);
 
