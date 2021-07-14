@@ -1,0 +1,516 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Self pickup with WooCommerce - InPost Paczkomaty, "
+"Poczta, Żabka\n"
+"POT-Creation-Date: 2021-07-13 17:49+0200\n"
+"PO-Revision-Date: 2021-07-13 17:49+0200\n"
+"Last-Translator: Leszek Pomianowski <kontakt@rapiddev.pl>\n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: wc-poczta.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: _SVN\n"
+
+#: _old/shipping-easypack.php:34 _old/shipping-easypack.php:91
+#: code/components/EasyPack.php:25 code/components/EasyPack.php:47
+msgid "Self Pickup - InPost Paczkomaty"
+msgstr "Odbiór własny - InPost Paczkomaty"
+
+#: _old/shipping-easypack.php:35 code/components/EasyPack.php:26
+msgid "Pickup at InPost Paczkomaty"
+msgstr "Odbiór w InPost Paczkomaty"
+
+#: _old/shipping-easypack.php:89 _old/shipping-poczta.php:104
+#: code/components/EasyPack.php:45 code/components/Poczta.php:47
+msgid "Title"
+msgstr "Tytuł"
+
+#: _old/shipping-easypack.php:90 _old/shipping-poczta.php:105
+#: code/components/EasyPack.php:46 code/components/Poczta.php:48
+msgid "Title displayed when you select a shipping option."
+msgstr "Tytuł pojawi się kiedy klient wybierze opcję wysyłki."
+
+#: _old/shipping-easypack.php:95 _old/shipping-easypack.php:107
+#: _old/shipping-easypack.php:119 code/components/EasyPack.php:52
+#, php-format
+msgid "Cost (Dimensions %s)"
+msgstr "Koszt (Gabaryt %s)"
+
+#: _old/shipping-easypack.php:96 _old/shipping-easypack.php:120
+#, php-format
+msgid "Primary cost (default is PLN %s + 23&#37; VAT)"
+msgstr "Podstawowy koszt (domyślnie %s + 23&#37; VAT)"
+
+#: _old/shipping-easypack.php:101 _old/shipping-easypack.php:113
+#: _old/shipping-easypack.php:125
+#, php-format
+msgid "Weight (Dimensions %s)"
+msgstr "Waga (Gabaryt %s)"
+
+#: _old/shipping-easypack.php:102
+msgid "Maximum allowed weight (default is 5kg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie to 5 kg)"
+
+#: _old/shipping-easypack.php:108
+#, php-format
+msgid "Primary cost (default is PLN %s + 23&#37;VAT)"
+msgstr "Podstawowy koszt (domyślnie %s + 23&#37;VAT)"
+
+#: _old/shipping-easypack.php:114
+msgid "Maximum allowed weight (default is 10kg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie to 10 kg)"
+
+#: _old/shipping-easypack.php:126
+msgid "Maximum allowed weight (default is 25kg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie to 25 kg)"
+
+#: _old/shipping-easypack.php:131
+msgid "Enable pickup in Parcel Lockers"
+msgstr "Włącz odbiór w paczkomatach"
+
+#: _old/shipping-easypack.php:132
+msgid "If you select this option, pickup will be possible at Parcel Lockers."
+msgstr "Jeśli wybierzesz tę opcję, odbiór będzie możliwy w paczkomatach."
+
+#: _old/shipping-easypack.php:137
+msgid "Enable pickup in POP"
+msgstr "Włącz odbiór w Punktach Obsługi Paczek"
+
+#: _old/shipping-easypack.php:138
+msgid ""
+"If you select this option, pickup will be possible at Parcel Collection "
+"Points."
+msgstr ""
+"Jeśli wybierzesz tę opcję, odbiór będzie możliwy w punktach odbioru paczek."
+
+#: _old/shipping-easypack.php:143 code/components/EasyPack.php:84
+msgid "Enable geolocation"
+msgstr "Włącz geolokalizację"
+
+#: _old/shipping-easypack.php:144 code/components/EasyPack.php:85
+msgid ""
+"If you enable this option, the pickup point will be proposed based on your "
+"geolocation."
+msgstr ""
+"Jeśli wybierzesz tę opcję, punkt odbioru zostanie zaproponowany na podstawie "
+"glokalizacji."
+
+#: _old/shipping-poczta.php:34 code/components/Poczta.php:27
+#: code/components/Poczta.php:49
+msgid "Self Pickup - Polish Post"
+msgstr "Odbiór własny - Poczta Polska"
+
+#: _old/shipping-poczta.php:35 code/components/Poczta.php:28
+msgid "Pickup at Żabka, Orlen, Biedronka, Ruch and Poczta Polska"
+msgstr "Odbiór w punktach Żabka, Orlen, Biedronka, Ruch i Poczta Polska"
+
+#: _old/shipping-poczta.php:106
+msgid "Self Pickup - Żabka, Orlen, Ruch"
+msgstr "Obiór w punkcie - Żabka, Orlen, Ruch"
+
+#: _old/shipping-poczta.php:109 code/components/Poczta.php:54
+msgid "Cost"
+msgstr "Koszt"
+
+#: _old/shipping-poczta.php:111
+msgid "Primary cost (default is PLN 10.94 + 23% VAT)"
+msgstr "Podstawowy koszt (domyślnie 10.94 zł + 23% VAT)"
+
+#: _old/shipping-poczta.php:115 code/components/Poczta.php:101
+msgid "Weight (kg)"
+msgstr "Waga (kg)"
+
+#: _old/shipping-poczta.php:117
+msgid "Maximum allowed weight (default is 20kg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie 20kg)"
+
+#: _old/shipping-poczta.php:122
+msgid "Enable pickup in Polish Post offices"
+msgstr "Włącz odbiór w placówkach Poczty Polskiej"
+
+#: _old/shipping-poczta.php:123
+msgid ""
+"If you select this option, Polish Post offices will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, placówki Poczty Polskiej pojawią się jako jeden z "
+"punktów odbioru."
+
+#: _old/shipping-poczta.php:128
+msgid "Enable pickup in Żabka"
+msgstr "Włącz odbiór w Żabce"
+
+#: _old/shipping-poczta.php:129
+msgid ""
+"If you select this option, Żabka stores will appear among the collection "
+"points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, sklepy Żabka pojawią się jako jeden z punktów "
+"odbioru."
+
+#: _old/shipping-poczta.php:133
+msgid "Enable pickup in Ruch"
+msgstr "Włącz odbiór w kioskach Ruch"
+
+#: _old/shipping-poczta.php:135
+msgid ""
+"If you select this option, Ruch stores will appear among the collection "
+"points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, kioski Ruch pojawią się jako jeden z punktów "
+"odbioru."
+
+#: _old/shipping-poczta.php:139
+msgid "Enable pickup in Orlen"
+msgstr "Włącz odbiór na stacjach Orlen"
+
+#: _old/shipping-poczta.php:141
+msgid ""
+"If you select this option, Orlen petrol stations will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, stacje Orlen pojawią się jako jeden z punktów "
+"odbioru."
+
+#: _old/shipping-poczta.php:151
+msgid "Enable pickup in postal automats"
+msgstr "Włącz odbiór w automatach pocztowych"
+
+#: _old/shipping-poczta.php:153
+msgid ""
+"If you select this option, Polish Post postal automats will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, automaty Poczty Polskiej pojawią się jako jeden z "
+"punktów odbioru."
+
+#: _old/sub-easypack.php:37 _old/sub-poczta.php:42 code/core/Actions.php:144
+msgid "Select a pickup point"
+msgstr "Wybierz punkt odbioru"
+
+#: _old/sub-easypack.php:51 _old/sub-poczta.php:56 code/core/Actions.php:150
+msgid "Pickup point name"
+msgstr "Nazwa punktu odbioru"
+
+#: _old/sub-easypack.php:58 _old/sub-poczta.php:63 code/core/Actions.php:151
+msgid "Pickup point address"
+msgstr "Adres punktu odbioru"
+
+#: _old/sub-easypack.php:75 _old/sub-poczta.php:80 code/core/Actions.php:169
+msgid "There was an error in the form. No fields with pickup address found"
+msgstr ""
+"Wystąpił błąd w formularzu. Nie znaleziono pól z adresem punktu odbioru"
+
+#: _old/sub-easypack.php:81 _old/sub-poczta.php:86
+msgid "You must select a pickup point"
+msgstr "Musisz wybrać punkt odbioru"
+
+#: _old/sub-easypack.php:95 _old/sub-poczta.php:100 code/core/Actions.php:186
+#, php-format
+msgid "'%s' pickup point is invalid. Form error?"
+msgstr "Punkt odbioru '%s' jest niepoprawny. Błąd formularza?"
+
+#: _old/sub-easypack.php:164 _old/sub-poczta.php:203
+msgid "Shipping - Self Pickup"
+msgstr "Wysyłka - Odbiór w punkcie"
+
+#: _old/sub-easypack.php:165 _old/sub-poczta.php:170
+msgid ""
+"You have decided to collect your package at the pickup point.<br/>Here are "
+"the pickup point details:"
+msgstr ""
+"Zdecydowałaś/eś się na odbiór w punkcie.<br/>Poniżej znajdują się informacje "
+"o wybranym punkcie odbioru:"
+
+#: _old/sub-easypack.php:168 _old/sub-easypack.php:202 _old/sub-poczta.php:173
+#: _old/sub-poczta.php:210
+msgid "Point name"
+msgstr "Nazwa punktu odbioru"
+
+#: _old/sub-easypack.php:168
+msgid "Parcel locker"
+msgstr "Paczkomat"
+
+#: _old/sub-easypack.php:169 _old/sub-easypack.php:203
+msgid "Address"
+msgstr "Adres"
+
+#: _old/sub-easypack.php:170 _old/sub-easypack.php:207 _old/sub-poczta.php:176
+#: _old/sub-poczta.php:214
+msgid "Phone"
+msgstr "Telefon"
+
+#: _old/sub-easypack.php:197
+msgid "Shipping - Self Pickup (InPost)"
+msgstr "Wysyłka - Odbiór w punkcie (InPost Paczkomaty)"
+
+#: _old/sub-easypack.php:198 _old/sub-poczta.php:204
+msgid "Customer has chosen to ship to a pickup point"
+msgstr "Klient wybrał odbiór w punkcie"
+
+#: _old/sub-easypack.php:204
+msgid "Opened 24/7"
+msgstr "Otwarte 24/7"
+
+#: _old/sub-easypack.php:204
+msgid "Yes"
+msgstr "Tak"
+
+#: _old/sub-easypack.php:204
+msgid "No"
+msgstr "Nie"
+
+#: _old/sub-easypack.php:205 _old/sub-poczta.php:213
+msgid "Zip-Code"
+msgstr "Kod pocztowy"
+
+#: _old/sub-easypack.php:206
+msgid "Province"
+msgstr "Województwo"
+
+#: _old/sub-easypack.php:210
+msgid "Open the InPost carrier website"
+msgstr "Otwórz stronę przewoźnika InPost"
+
+#: _old/sub-poczta.php:169
+msgid "Shipping - Self Pickup (Polish Post)"
+msgstr "Wysyłka - Odbiór w punkcie (Poczta Polska)"
+
+#: _old/sub-poczta.php:174 _old/sub-poczta.php:211
+msgid "Street"
+msgstr "Ulica"
+
+#: _old/sub-poczta.php:175 _old/sub-poczta.php:212
+msgid "City"
+msgstr "Miasto"
+
+#: _old/sub-poczta.php:209
+msgid "Type"
+msgstr "Typ"
+
+#: _old/sub-poczta.php:217
+msgid "Export file for upload in Envelo"
+msgstr "Eksportuj plik do wgrania w Envelo"
+
+#: _old/sub-poczta.php:218
+msgid "Open the Envelo carrier website"
+msgstr "Otwórz stronę przewoźnika Envelo"
+
+#: code/components/EasyPack.php:53 code/components/Poczta.php:55
+#, php-format
+msgid "Primary cost (default is %s net)"
+msgstr "Koszt podstawowy (wartość domyślna to %s netto)"
+
+#: code/components/EasyPack.php:59 code/components/Poczta.php:61
+msgid "Pickup points"
+msgstr "Punkty odbioru"
+
+#: code/components/EasyPack.php:60 code/components/Poczta.php:62
+msgid "Select which pickup points should be available"
+msgstr "Wybierz, które punkty odbioru powinny być dostępne"
+
+#: code/components/EasyPack.php:63
+msgid "Parcel collection point (POP)"
+msgstr "Punkt odbioru paczek (POP)"
+
+#: code/components/EasyPack.php:64
+msgid "Parcel Locker"
+msgstr "Paczkomat"
+
+#: code/components/EasyPack.php:70 code/components/Poczta.php:87
+msgid "Allow free shipping"
+msgstr "Zezwól na darmową dostawę"
+
+#: code/components/EasyPack.php:71 code/components/Poczta.php:88
+msgid "If checked, it allows free shipping on the gross price listed below."
+msgstr ""
+"Jeśli jest zaznaczona, umożliwia bezpłatną wysyłkę po cenie brutto "
+"wymienionej poniżej."
+
+#: code/components/EasyPack.php:77 code/components/Poczta.php:94
+msgid "Free shipping for orders above"
+msgstr "Bezpłatna wysyłka dla zamówień powyżej"
+
+#: code/components/EasyPack.php:78 code/components/Poczta.php:95
+#, php-format
+msgid "Default %s"
+msgstr "Domyślnie: %s"
+
+#: code/components/Poczta.php:65
+msgid "Poczta"
+msgstr "Poczta"
+
+#: code/components/Poczta.php:66
+msgid "Orlen petrol stations"
+msgstr "Stacje benzynowe Orlen"
+
+#: code/components/Poczta.php:67
+msgid "Post Pickup machine"
+msgstr "Automat na Poczcie"
+
+#: code/components/Poczta.php:68
+msgid "Ruch store"
+msgstr "Sklep Ruch"
+
+#: code/components/Poczta.php:69
+msgid "Żabka store"
+msgstr "Sklep Żabka"
+
+#: code/components/Poczta.php:70
+msgid "Freshmarket store"
+msgstr "Sklep Freshmarket"
+
+#: code/components/Poczta.php:71
+msgid "Biedronka store Pickup machine"
+msgstr "Punkt odbioru w Biedronce"
+
+#: code/components/Poczta.php:72
+msgid "Carrefour store Pickup machine"
+msgstr "Punkt odbioru w Carrefour"
+
+#: code/components/Poczta.php:73
+msgid "Post Office Pickup machine"
+msgstr "Punkt odbioru w Poczcie Polskiej"
+
+#: code/components/Poczta.php:74
+msgid "Społem store Pickup machine"
+msgstr "Punkt odbioru w Społem"
+
+#: code/components/Poczta.php:75
+msgid "Post mailbox"
+msgstr "Skrzynka pocztowa"
+
+#: code/components/Poczta.php:76
+msgid "Lewiatan store Pickup machine"
+msgstr "Punkt odbioru w Lewiatanie"
+
+#: code/components/Poczta.php:77
+msgid "Lewiatan store"
+msgstr "Sklep Lewiatan"
+
+#: code/components/Poczta.php:78
+msgid "ABC store"
+msgstr "Sklep ABC"
+
+#: code/components/Poczta.php:79
+msgid "Deli Center store"
+msgstr "Sklep Delikatesy Centrum"
+
+#: code/components/Poczta.php:80
+msgid "Biedronka store"
+msgstr "Sklep Biedronka"
+
+#: code/components/Poczta.php:81
+msgid "Kaufland store"
+msgstr "Sklep Kaufland"
+
+#: code/components/Poczta.php:102
+#, php-format
+msgid "Maximum allowed weight (default is %skg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie %skg)"
+
+#: code/core/Actions.php:92
+msgid "WC Poczta"
+msgstr "WC Poczta"
+
+#: code/core/Actions.php:93
+msgid "Done!"
+msgstr "Gotowe!"
+
+#: code/core/Actions.php:173
+msgid "You must select a <strong>pickup point</strong>"
+msgstr "Musisz wybrać <strong>punkt odbioru</strong>"
+
+#: code/core/ShippingMethod.php:38
+msgid "All in all, I'd like more features"
+msgstr "W sumie, chciałbym więcej funkcji"
+
+#: code/core/ShippingMethod.php:166
+msgid ""
+"This plugin is free, but it takes time to add new features and fix bugs."
+msgstr ""
+"Ta wtyczka jest darmowa, ale wymaga czasu, aby dodawać nowe funkcje i "
+"naprawiać błędy."
+
+#: code/core/ShippingMethod.php:168
+msgid ""
+"If you want to support us and speed up the development of the plugin, "
+"contact us."
+msgstr ""
+"Jeśli chcesz nas wesprzeć i przyspieszyć rozwój wtyczki, skontaktuj się z "
+"nami."
+
+#. Plugin Name of the plugin/theme
+msgid ""
+"Self Pickup with WooCommerce - InPost Paczkomaty, Polish Post, Żabka and Ruch"
+msgstr "Odbiór własny z WooCommerce - InPost Paczkomaty, Poczta, Żabka i Ruch"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/wc-poczta/"
+msgstr "http://wordpress.org/plugins/wc-poczta/"
+
+#. Description of the plugin/theme
+msgid ""
+"Integration of self pickup in the Inpost Paczkomaty, Polish Post offices, "
+"Orlen, Żabka, Ruch stores and others."
+msgstr ""
+"Integracja odbioru osobistego w Paczkomatach, Poczcie Polskiej, stacjach "
+"Orlen, sklepach Żabka, Ruch i innych."
+
+#. Author of the plugin/theme
+msgid "Leszek Pomianowski"
+msgstr "Leszek Pomianowski"
+
+#. Author URI of the plugin/theme
+msgid "https://rdev.cc/"
+msgstr "https://rdev.cc/"
+
+#, php-format
+#~ msgid "Sorry, %d kg exceeds the maximum weight of %d kg for %s"
+#~ msgstr ""
+#~ "Przepraszamy, waga %dkg przekracza maksymalną, dopuszczalną wagę %dkg dla "
+#~ "wysyłki %s"
+
+#~ msgid "Polish Post - Self Pickup"
+#~ msgstr "Poczta Polska - Odbiór w punkcie"
+
+#~ msgid "Enable plugin"
+#~ msgstr "Włącz wtyczkę"
+
+#~ msgid "Enable this shipping."
+#~ msgstr "Włącz tę metodę wysyłki."
+
+#~ msgid "Include tax"
+#~ msgstr "Zawiera podatek"
+
+#~ msgid ""
+#~ "If you check this option, the shipping option will be subject to tax."
+#~ msgstr "Jeśli zaznaczysz tę opcję, ta opcja wysyłki zostanie opodatkowana."
+
+#~ msgid "Primary cost (default is PLN 13.45)"
+#~ msgstr "Podstawowy koszt (domyślnie 13.45 zł)"
+
+#~ msgid "RapidDev"
+#~ msgstr "RapidDev"
+
+#~ msgid "Cost (Dimensions B)"
+#~ msgstr "Koszt (Gabaryt B)"
+
+#~ msgid "Cost (Dimensions C)"
+#~ msgstr "Koszt (Gabaryt C)"
+
+#~ msgid "Enable this shipping option"
+#~ msgstr "Włącz tę metodę wysyłki"
