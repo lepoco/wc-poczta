@@ -63,21 +63,21 @@ final class Poczta extends ShippingMethod
       'default' => 'poczta',
       'options' => [
         'poczta' => __('Poczta', Bootstrap::DOMAIN),
-        'orlen' => __('Orlen petrol stations', Bootstrap::DOMAIN),
+        'automat_placowka' => __('Post Office Pickup machine', Bootstrap::DOMAIN),
         'automat_pocztowy' => __('Post Pickup machine', Bootstrap::DOMAIN),
-        'ruch' => __('Ruch store', Bootstrap::DOMAIN),
+        'skrzynka_pocztowa' => __('Post mailbox', Bootstrap::DOMAIN),
         'zabka' => __('Żabka store', Bootstrap::DOMAIN),
+        'ruch' => __('Ruch store', Bootstrap::DOMAIN),
+        'orlen' => __('Orlen petrol stations', Bootstrap::DOMAIN),
+        'biedronka' => __('Biedronka store', Bootstrap::DOMAIN),
         'freshmarket' => __('Freshmarket store', Bootstrap::DOMAIN),
         'automat_biedronka' => __('Biedronka store Pickup machine', Bootstrap::DOMAIN),
         'automat_carrefour' => __('Carrefour store Pickup machine', Bootstrap::DOMAIN),
-        'automat_placowka' => __('Post Office Pickup machine', Bootstrap::DOMAIN),
         'automat_spolem' => __('Społem store Pickup machine', Bootstrap::DOMAIN),
-        'skrzynka_pocztowa' => __('Post mailbox', Bootstrap::DOMAIN),
         'automat_lewiatan' => __('Lewiatan store Pickup machine', Bootstrap::DOMAIN),
         'lewiatan' => __('Lewiatan store', Bootstrap::DOMAIN),
         'abc' => __('ABC store', Bootstrap::DOMAIN),
         'delikatesy_centrum' => __('Deli Center store', Bootstrap::DOMAIN),
-        'biedronka' => __('Biedronka store', Bootstrap::DOMAIN),
         'kaufland' => __('Kaufland store', Bootstrap::DOMAIN),
       ]
     ]);
@@ -112,7 +112,7 @@ final class Poczta extends ShippingMethod
     $totalPrice = (float) $this->getCartTotal();
     $totalWeight = (float) $this->getCartWeight($package);
 
-    if ($weightLimit > 1 && $totalWeight > $weightLimit) {
+    if ($weightLimit > 0 && $totalWeight > $weightLimit) {
       return; //Permitted weight exceeded
     }
 

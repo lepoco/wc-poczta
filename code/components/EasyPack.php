@@ -163,7 +163,7 @@ final class EasyPack extends ShippingMethod
     $totalPrice = (float) $this->getCartTotal();
     $totalWeight = (float) $this->getCartWeight($package);
 
-    if ($weightLimit > 1 && $totalWeight > $weightLimit) {
+    if ($weightLimit > 0 && $totalWeight > $weightLimit) {
       return; //Permitted weight exceeded
     }
 

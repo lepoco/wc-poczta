@@ -12,6 +12,7 @@
 namespace WCPoczta\Code\Core;
 
 use WP_Post;
+use WC_Order;
 
 final class Actions
 {
@@ -53,7 +54,8 @@ final class Actions
     add_action('woocommerce_review_order_after_shipping', [$this, 'customFields'], 20);
     add_action('woocommerce_checkout_process', [$this, 'customFieldsValidation']);
     add_action('woocommerce_checkout_update_order_meta', [$this, 'customFieldsSave']);
-    add_action('woocommerce_order_details_after_customer_details', [$this, 'customDetails'], 1, 1);
+    add_action('woocommerce_after_order_details', [$this, 'customDetails'], 1, 1);
+    add_filter('woocommerce_email_order_meta', [$this, 'emailDetails'], 10, 3);
 
     add_action('add_meta_boxes', function () {
       foreach (wc_get_order_types('order-meta-boxes') as $type) {
@@ -195,7 +197,7 @@ final class Actions
     $containerPre = '<tr class="wc-poczta wc-poczta-select-point"><td colspan="2">';
     $containerSuf = '</td></tr>';
 
-    if('Storefront' == $theme->Name) {
+    if ('Storefront' == $theme->Name) {
       $containerPre = '<tr class="wc-poczta wc-poczta-select-point"><th colspan="2">';
       $containerSuf = '</th></tr>';
     }
@@ -272,7 +274,7 @@ final class Actions
   /**
    * @param Automattic\WooCommerce\Admin\Overrides\Order $order
    */
-  public function customDetails($order): void
+  public function customDetails(WC_Order $order): void
   {
     $orderId = $order->get_id();
     $wcpId = get_post_meta($orderId, '_wcpoczta_id', true);
@@ -282,6 +284,44 @@ final class Actions
     }
 
     $this->bootstrap->getPluginView('customer', ['id' => $orderId, 'wcpId' => $wcpId, 'order' => $order, 'weight' => $this->getTotalWeight($order)]);
+  }
+
+  public function emailDetails($order, $sentToAdmin, $plainText)
+  {
+    $orderId = $order->get_id();
+    $wpcId = get_post_meta($orderId, '_wcpoczta_id', true);
+
+    if (empty($wpcId)) {
+      return;
+    }
+
+    $weight = $this->getTotalWeight($order);
+    $html = '';
+
+    if ($plainText === false) {
+      $html .= '<h2>' . __('Delivery to the pickup point', Bootstrap::DOMAIN) . '</h2>';
+
+      $html .= '<p><strong>' . __('Pickup point', Bootstrap::DOMAIN) . ':</strong> ' . get_post_meta($orderId, '_wcpoczta_name', true);
+      $html .= '<br><strong>' . __('Phone', Bootstrap::DOMAIN) . ':</strong> ' . $order->get_billing_phone();
+      $html .= '<br><strong>' . __('Weight', Bootstrap::DOMAIN) . ':</strong> ' . ($weight > 0 ? $weight . ' ' . get_option('woocommerce_weight_unit') : __('Unknown', Bootstrap::DOMAIN));
+      $html .= '</p>';
+
+      $html .= '<p><strong>' . __('Pickup point address', Bootstrap::DOMAIN) . ':</strong>';
+      $html .= '<br>' . get_post_meta($orderId, '_wcpoczta_address', true);
+      $html .= '<br>' . get_post_meta($orderId, '_wcpoczta_zipcode', true);
+      $html .= '<br>' . get_post_meta($orderId, '_wcpoczta_city', true);
+      $html .= '</p>';
+    } else {
+      $html .= __('Delivery to the pickup point', Bootstrap::DOMAIN) . PHP_EOL;
+      $html .= __('Pickup point', Bootstrap::DOMAIN) . ' - ' . get_post_meta($orderId, '_wcpoczta_name', true) . PHP_EOL . PHP_EOL;
+
+      $html .= __('Pickup point address', Bootstrap::DOMAIN) . ':' . PHP_EOL;
+      $html .= get_post_meta($orderId, '_wcpoczta_address', true) . PHP_EOL;
+      $html .= get_post_meta($orderId, '_wcpoczta_zipcode', true) . PHP_EOL;
+      $html .= get_post_meta($orderId, '_wcpoczta_city', true);
+    }
+
+    echo $html;
   }
 
   public function metaAdmin(?WP_Post $post): void
@@ -363,7 +403,7 @@ final class Actions
 
     foreach ($order->get_items() as $productId => $product) {
       $quantity = $product->get_quantity();
-      
+
       $product = $product->get_product();
       $productWeight = $product->get_weight();
 

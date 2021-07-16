@@ -5,7 +5,7 @@ Tags: e-commerce, paczkomaty, inpost, poczta, polska, żabka, odbior, punkcie, r
 Requires at least: 5.0.0
 Tested up to: 5.8.0
 Requires PHP: 7.4.1
-Stable tag: wc-poczta
+Stable tag: trunk
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -76,7 +76,7 @@ During the development process, we also used tools provided by the creators of W
 
 = Minimum Requirements =
 
-* PHP version 7.4.6 or greater (PHP 8.0.8 or greater is recommended)
+* PHP version 7.4.1 or greater (PHP 8.0.8 or greater is recommended)
 * WordPress version 5.0.0 or greater (WordPress 5.7.2 or greater is recommended)
 * WooCommerce version 5.0.0 or greater (WooCommerce 5.5.1 or greater is recommended)
 
@@ -101,6 +101,11 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= 1.3.0 =
+1. Fixing the weight limit
+2. Correct the display of pickup point in order summary
+3. Email fields added
+
 = 1.2.0 =
 1. Everything is new
 2. Lots of bugs added to fix later
@@ -123,6 +128,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 1. The plugin was created
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+Fixing the weight limit and add custom e-mail fields.
 
 = 1.2.0 =
 The new version of the plug is not compatible with the old one. Be careful while updating.

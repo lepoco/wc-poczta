@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Self pickup with WooCommerce - InPost Paczkomaty, "
 "Poczta, Żabka\n"
-"POT-Creation-Date: 2021-07-16 15:19+0200\n"
-"PO-Revision-Date: 2021-07-16 15:20+0200\n"
+"POT-Creation-Date: 2021-07-16 22:26+0200\n"
+"PO-Revision-Date: 2021-07-16 22:27+0200\n"
 "Last-Translator: Leszek Pomianowski\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -24,80 +24,489 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: _SVN\n"
 
-#: code/components/EasyPack.php:37 code/components/EasyPack.php:59
-msgid "Self Pickup - InPost Paczkomaty"
-msgstr "Odbiór własny - InPost Paczkomaty"
+#: .subversion/tags/1.0.0/assets/class.php:224
+#: .subversion/tags/1.0.1/assets/class.php:224
+#: .subversion/tags/1.0.3/assets/class.php:218
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:37
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:42
+#: .subversion/tags/1.2.0/code/core/Actions.php:205
+#: .subversion/trunk/code/core/Actions.php:205 code/core/Actions.php:206
+msgid "Select a pickup point"
+msgstr "Wybierz punkt odbioru"
 
-#: code/components/EasyPack.php:38
-msgid "Pickup at InPost Paczkomaty"
-msgstr "Odbiór w InPost Paczkomaty"
+#: .subversion/tags/1.0.0/assets/class.php:238
+#: .subversion/tags/1.0.1/assets/class.php:238
+#: .subversion/tags/1.0.3/assets/class.php:232
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:51
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:56
+#: .subversion/tags/1.2.0/code/core/Actions.php:211
+#: .subversion/trunk/code/core/Actions.php:211 code/core/Actions.php:212
+msgid "Pickup point name"
+msgstr "Nazwa punktu odbioru"
 
+#: .subversion/tags/1.0.0/assets/class.php:245
+#: .subversion/tags/1.0.1/assets/class.php:245
+#: .subversion/tags/1.0.3/assets/class.php:239
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:58
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:63
+#: .subversion/tags/1.2.0/code/core/Actions.php:212
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:107
+#: .subversion/tags/1.2.0/code/views/summary.php:94
+#: .subversion/trunk/code/core/Actions.php:212
+#: .subversion/trunk/code/views/summary-depracted.php:107
+#: .subversion/trunk/code/views/summary.php:94 code/core/Actions.php:213
+#: code/core/Actions.php:308 code/views/summary-depracted.php:107
+#: code/views/summary.php:94
+msgid "Pickup point address"
+msgstr "Adres punktu odbioru"
+
+#: .subversion/tags/1.0.0/assets/class.php:263
+#: .subversion/tags/1.0.1/assets/class.php:263
+#: .subversion/tags/1.0.3/assets/class.php:257
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:75
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:80
+#: .subversion/tags/1.2.0/code/core/Actions.php:231
+#: .subversion/trunk/code/core/Actions.php:231 code/core/Actions.php:232
+msgid "There was an error in the form. No fields with pickup address found"
+msgstr ""
+"Wystąpił błąd w formularzu. Nie znaleziono pól z adresem punktu odbioru"
+
+#: .subversion/tags/1.0.0/assets/class.php:269
+#: .subversion/tags/1.0.1/assets/class.php:269
+#: .subversion/tags/1.0.3/assets/class.php:263
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:81
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:86
+msgid "You must select a pickup point"
+msgstr "Musisz wybrać punkt odbioru"
+
+#: .subversion/tags/1.0.0/assets/class.php:283
+#: .subversion/tags/1.0.1/assets/class.php:283
+#: .subversion/tags/1.0.3/assets/class.php:277
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:95
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:100
+#: .subversion/tags/1.2.0/code/core/Actions.php:248
+#: .subversion/trunk/code/core/Actions.php:248 code/core/Actions.php:249
+#, php-format
+msgid "'%s' pickup point is invalid. Form error?"
+msgstr "Punkt odbioru '%s' jest niepoprawny. Błąd formularza?"
+
+#: .subversion/tags/1.0.0/assets/class.php:372
+#: .subversion/tags/1.0.1/assets/class.php:372
+#: .subversion/tags/1.0.3/assets/class.php:366
+#: .subversion/tags/1.1.0/assets/class.php:226
+#, php-format
+msgid "Sorry, %d kg exceeds the maximum weight of %d kg for %s"
+msgstr ""
+"Przepraszamy, waga %dkg przekracza maksymalną, dopuszczalną wagę %dkg dla "
+"wysyłki %s"
+
+#: .subversion/tags/1.0.0/assets/class.php:375
+#: .subversion/tags/1.0.0/assets/shipping.php:64
+#: .subversion/tags/1.0.0/assets/shipping.php:171
+#: .subversion/tags/1.0.0/assets/shipping.php:199
+#: .subversion/tags/1.0.1/assets/class.php:375
+#: .subversion/tags/1.0.1/assets/shipping.php:64
+#: .subversion/tags/1.0.1/assets/shipping.php:171
+#: .subversion/tags/1.0.1/assets/shipping.php:199
+#: .subversion/tags/1.0.3/assets/shipping.php:64
+msgid "Polish Post - Self Pickup"
+msgstr "Poczta Polska - Odbiór w punkcie"
+
+#: .subversion/tags/1.0.0/assets/class.php:403
+#: .subversion/tags/1.0.0/assets/class.php:445
+#: .subversion/tags/1.0.1/assets/class.php:415
+#: .subversion/tags/1.0.1/assets/class.php:458
+#: .subversion/tags/1.0.3/assets/class.php:409
+#: .subversion/tags/1.0.3/assets/class.php:452
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:164
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:203
+msgid "Shipping - Self Pickup"
+msgstr "Wysyłka - Odbiór w punkcie"
+
+#: .subversion/tags/1.0.0/assets/class.php:404
+#: .subversion/tags/1.0.1/assets/class.php:416
+#: .subversion/tags/1.0.3/assets/class.php:410
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:165
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:170
+msgid ""
+"You have decided to collect your package at the pickup point.<br/>Here are "
+"the pickup point details:"
+msgstr ""
+"Zdecydowałaś/eś się na odbiór w punkcie.<br/>Poniżej znajdują się informacje "
+"o wybranym punkcie odbioru:"
+
+#: .subversion/tags/1.0.0/assets/class.php:407
+#: .subversion/tags/1.0.0/assets/class.php:452
+#: .subversion/tags/1.0.1/assets/class.php:419
+#: .subversion/tags/1.0.1/assets/class.php:465
+#: .subversion/tags/1.0.3/assets/class.php:413
+#: .subversion/tags/1.0.3/assets/class.php:459
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:168
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:202
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:173
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:210
+msgid "Point name"
+msgstr "Nazwa punktu odbioru"
+
+#: .subversion/tags/1.0.0/assets/class.php:408
+#: .subversion/tags/1.0.0/assets/class.php:453
+#: .subversion/tags/1.0.1/assets/class.php:420
+#: .subversion/tags/1.0.1/assets/class.php:466
+#: .subversion/tags/1.0.3/assets/class.php:414
+#: .subversion/tags/1.0.3/assets/class.php:460
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:174
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:211
+msgid "Street"
+msgstr "Ulica"
+
+#: .subversion/tags/1.0.0/assets/class.php:409
+#: .subversion/tags/1.0.0/assets/class.php:454
+#: .subversion/tags/1.0.1/assets/class.php:421
+#: .subversion/tags/1.0.1/assets/class.php:467
+#: .subversion/tags/1.0.3/assets/class.php:415
+#: .subversion/tags/1.0.3/assets/class.php:461
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:175
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:212
+msgid "City"
+msgstr "Miasto"
+
+#: .subversion/tags/1.0.0/assets/class.php:410
+#: .subversion/tags/1.0.0/assets/class.php:456
+#: .subversion/tags/1.0.1/assets/class.php:422
+#: .subversion/tags/1.0.1/assets/class.php:469
+#: .subversion/tags/1.0.3/assets/class.php:416
+#: .subversion/tags/1.0.3/assets/class.php:463
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:170
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:207
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:176
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:214
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:80
+#: .subversion/tags/1.2.0/code/views/summary.php:67
+#: .subversion/trunk/code/views/summary-depracted.php:80
+#: .subversion/trunk/code/views/summary.php:67 code/core/Actions.php:304
+#: code/views/summary-depracted.php:80 code/views/summary.php:67
+msgid "Phone"
+msgstr "Telefon"
+
+#: .subversion/tags/1.0.0/assets/class.php:446
+#: .subversion/tags/1.0.1/assets/class.php:459
+#: .subversion/tags/1.0.3/assets/class.php:453
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:198
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:204
+msgid "Customer has chosen to ship to a pickup point"
+msgstr "Klient wybrał odbiór w punkcie"
+
+#: .subversion/tags/1.0.0/assets/class.php:451
+#: .subversion/tags/1.0.1/assets/class.php:464
+#: .subversion/tags/1.0.3/assets/class.php:458
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:209
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:97
+#: .subversion/tags/1.2.0/code/views/summary.php:84
+#: .subversion/trunk/code/views/summary-depracted.php:97
+#: .subversion/trunk/code/views/summary.php:84 code/core/Actions.php:303
+#: code/views/summary-depracted.php:97 code/views/summary.php:84
+msgid "Type"
+msgstr "Typ"
+
+#: .subversion/tags/1.0.0/assets/class.php:455
+#: .subversion/tags/1.0.1/assets/class.php:468
+#: .subversion/tags/1.0.3/assets/class.php:462
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:205
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:213
+msgid "Zip-Code"
+msgstr "Kod pocztowy"
+
+#: .subversion/tags/1.0.0/assets/class.php:459
+#: .subversion/tags/1.0.1/assets/class.php:475
+#: .subversion/tags/1.0.3/assets/class.php:469
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:217
+msgid "Export file for upload in Envelo"
+msgstr "Eksportuj plik do wgrania w Envelo"
+
+#: .subversion/tags/1.0.0/assets/class.php:460
+#: .subversion/tags/1.0.1/assets/class.php:477
+#: .subversion/tags/1.0.3/assets/class.php:471
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:218
+msgid "Open the Envelo carrier website"
+msgstr "Otwórz stronę przewoźnika Envelo"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:65
+#: .subversion/tags/1.0.1/assets/shipping.php:65
+#: .subversion/tags/1.0.3/assets/shipping.php:65
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:35
+#: .subversion/tags/1.2.0/code/components/Poczta.php:28
+#: .subversion/trunk/code/components/Poczta.php:28
+#: code/components/Poczta.php:28
+msgid "Pickup at Żabka, Orlen, Biedronka, Ruch and Poczta Polska"
+msgstr "Odbiór w punktach Żabka, Orlen, Biedronka, Ruch i Poczta Polska"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:120
+#: .subversion/tags/1.0.1/assets/shipping.php:120
+#: .subversion/tags/1.0.3/assets/shipping.php:120
+msgid "Enable plugin"
+msgstr "Włącz wtyczkę"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:122
+#: .subversion/tags/1.0.1/assets/shipping.php:122
+#: .subversion/tags/1.0.3/assets/shipping.php:122
+msgid "Enable this shipping."
+msgstr "Włącz tę metodę wysyłki."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:126
+#: .subversion/tags/1.0.1/assets/shipping.php:126
+msgid "Include tax"
+msgstr "Zawiera podatek"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:128
+#: .subversion/tags/1.0.1/assets/shipping.php:128
+msgid "If you check this option, the shipping option will be subject to tax."
+msgstr "Jeśli zaznaczysz tę opcję, ta opcja wysyłki zostanie opodatkowana."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:132
+#: .subversion/tags/1.0.1/assets/shipping.php:132
+#: .subversion/tags/1.0.3/assets/shipping.php:126
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:116
+msgid "Enable pickup in Polish Post offices"
+msgstr "Włącz odbiór w placówkach Poczty Polskiej"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:134
+#: .subversion/tags/1.0.1/assets/shipping.php:134
+#: .subversion/tags/1.0.3/assets/shipping.php:128
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:117
+msgid ""
+"If you select this option, Polish Post offices will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, placówki Poczty Polskiej pojawią się jako jeden z "
+"punktów odbioru."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:138
+#: .subversion/tags/1.0.1/assets/shipping.php:138
+#: .subversion/tags/1.0.3/assets/shipping.php:132
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:122
+msgid "Enable pickup in Żabka"
+msgstr "Włącz odbiór w Żabce"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:140
+#: .subversion/tags/1.0.1/assets/shipping.php:140
+#: .subversion/tags/1.0.3/assets/shipping.php:134
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:123
+msgid ""
+"If you select this option, Żabka stores will appear among the collection "
+"points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, sklepy Żabka pojawią się jako jeden z punktów "
+"odbioru."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:144
+#: .subversion/tags/1.0.1/assets/shipping.php:144
+#: .subversion/tags/1.0.3/assets/shipping.php:138
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:127
+msgid "Enable pickup in Ruch"
+msgstr "Włącz odbiór w kioskach Ruch"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:146
+#: .subversion/tags/1.0.1/assets/shipping.php:146
+#: .subversion/tags/1.0.3/assets/shipping.php:140
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:129
+msgid ""
+"If you select this option, Ruch stores will appear among the collection "
+"points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, kioski Ruch pojawią się jako jeden z punktów "
+"odbioru."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:150
+#: .subversion/tags/1.0.1/assets/shipping.php:150
+#: .subversion/tags/1.0.3/assets/shipping.php:144
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:133
+msgid "Enable pickup in Orlen"
+msgstr "Włącz odbiór na stacjach Orlen"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:152
+#: .subversion/tags/1.0.1/assets/shipping.php:152
+#: .subversion/tags/1.0.3/assets/shipping.php:146
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:135
+msgid ""
+"If you select this option, Orlen petrol stations will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, stacje Orlen pojawią się jako jeden z punktów "
+"odbioru."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:162
+#: .subversion/tags/1.0.1/assets/shipping.php:162
+#: .subversion/tags/1.0.3/assets/shipping.php:156
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:145
+msgid "Enable pickup in postal automats"
+msgstr "Włącz odbiór w automatach pocztowych"
+
+#: .subversion/tags/1.0.0/assets/shipping.php:164
+#: .subversion/tags/1.0.1/assets/shipping.php:164
+#: .subversion/tags/1.0.3/assets/shipping.php:158
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:147
+msgid ""
+"If you select this option, Polish Post postal automats will appear among the "
+"collection points."
+msgstr ""
+"Jeśli zaznaczysz tę opcję, automaty Poczty Polskiej pojawią się jako jeden z "
+"punktów odbioru."
+
+#: .subversion/tags/1.0.0/assets/shipping.php:168
+#: .subversion/tags/1.0.1/assets/shipping.php:168
+#: .subversion/tags/1.0.3/assets/shipping.php:162
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:89
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:104
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:57
+#: .subversion/tags/1.2.0/code/components/Poczta.php:47
+#: .subversion/trunk/code/components/EasyPack.php:57
+#: .subversion/trunk/code/components/Poczta.php:47
 #: code/components/EasyPack.php:57 code/components/Poczta.php:47
 msgid "Title"
 msgstr "Tytuł"
 
+#: .subversion/tags/1.0.0/assets/shipping.php:170
+#: .subversion/tags/1.0.1/assets/shipping.php:170
+#: .subversion/tags/1.0.3/assets/shipping.php:164
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:90
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:105
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:58
+#: .subversion/tags/1.2.0/code/components/Poczta.php:48
+#: .subversion/trunk/code/components/EasyPack.php:58
+#: .subversion/trunk/code/components/Poczta.php:48
 #: code/components/EasyPack.php:58 code/components/Poczta.php:48
 msgid "Title displayed when you select a shipping option."
 msgstr "Tytuł pojawi się kiedy klient wybierze opcję wysyłki."
 
-#: code/components/EasyPack.php:64
-#, php-format
-msgid "Cost (Size %s)"
-msgstr "Koszt (rozmiar %s)"
+#: .subversion/tags/1.0.0/assets/shipping.php:174
+#: .subversion/tags/1.0.1/assets/shipping.php:174
+#: .subversion/tags/1.0.3/assets/shipping.php:168
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:119
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:151
+msgid "Weight (kg)"
+msgstr "Waga (kg)"
 
-#: code/components/EasyPack.php:65 code/components/EasyPack.php:128
-#: code/components/EasyPack.php:144 code/components/Poczta.php:55
-#, php-format
-msgid "Primary cost (default is %s net)"
-msgstr "Koszt podstawowy (wartość domyślna to %s netto)"
+#: .subversion/tags/1.0.0/assets/shipping.php:176
+#: .subversion/tags/1.0.1/assets/shipping.php:176
+#: .subversion/tags/1.0.3/assets/shipping.php:170
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:120
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:153
+msgid "Maximum allowed weight (default is 20kg)"
+msgstr "Maksymalna dopuszczalna waga (domyślnie 20kg)"
 
-#: code/components/EasyPack.php:71 code/components/Poczta.php:61
-msgid "Pickup points"
-msgstr "Punkty odbioru"
+#: .subversion/tags/1.0.0/assets/shipping.php:180
+#: .subversion/tags/1.0.1/assets/shipping.php:180
+#: .subversion/tags/1.0.3/assets/shipping.php:174
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:95
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:109
+#: .subversion/tags/1.2.0/code/components/Poczta.php:54
+#: .subversion/trunk/code/components/Poczta.php:54
+#: code/components/Poczta.php:54
+msgid "Cost"
+msgstr "Koszt"
 
-#: code/components/EasyPack.php:72 code/components/Poczta.php:62
-msgid "Select which pickup points should be available"
-msgstr "Wybierz, które punkty odbioru powinny być dostępne"
+#: .subversion/tags/1.0.0/assets/shipping.php:182
+#: .subversion/tags/1.0.1/assets/shipping.php:182
+msgid "Primary cost (default is PLN 13.45)"
+msgstr "Podstawowy koszt (domyślnie 13.45 zł)"
 
-#: code/components/EasyPack.php:75
-msgid "Parcel collection point (POP)"
-msgstr "Punkt odbioru paczek (POP)"
+#: .subversion/tags/1.0.3/assets/class.php:369
+#: .subversion/tags/1.0.3/assets/shipping.php:165
+#: .subversion/tags/1.0.3/assets/shipping.php:193
+#: .subversion/tags/1.1.0/assets/class.php:229
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:106
+msgid "Self Pickup - Żabka, Orlen, Ruch"
+msgstr "Obiór w punkcie - Żabka, Orlen, Ruch"
 
-#: code/components/EasyPack.php:76
-msgid "Parcel Locker"
+#: .subversion/tags/1.0.3/assets/shipping.php:176
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:96
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:111
+msgid "Primary cost (default is PLN 10.94 + 23% VAT)"
+msgstr "Podstawowy koszt (domyślnie 10.94 zł + 23% VAT)"
+
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:168
+msgid "Parcel locker"
 msgstr "Paczkomat"
 
-#: code/components/EasyPack.php:82 code/components/Poczta.php:87
-msgid "Weight limit"
-msgstr "Limit wagi"
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:169
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:203
+msgid "Address"
+msgstr "Adres"
 
-#: code/components/EasyPack.php:83 code/components/Poczta.php:88
-msgid "Total weight limit, above which the shipping option will not show up."
-msgstr "Całkowity limit wagi, powyżej którego opcja wysyłki nie pojawi się."
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:197
+msgid "Shipping - Self Pickup (InPost)"
+msgstr "Wysyłka - Odbiór w punkcie (InPost Paczkomaty)"
 
-#: code/components/EasyPack.php:89 code/components/Poczta.php:94
-msgid "Allow free shipping"
-msgstr "Zezwól na darmową dostawę"
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:204
+msgid "Opened 24/7"
+msgstr "Otwarte 24/7"
 
-#: code/components/EasyPack.php:90 code/components/Poczta.php:95
-msgid "If checked, it allows free shipping on the gross price listed below."
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:204
+msgid "Yes"
+msgstr "Tak"
+
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:204
+msgid "No"
+msgstr "Nie"
+
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:206
+msgid "Province"
+msgstr "Województwo"
+
+#: .subversion/tags/1.1.0/assets/sub-easypack.php:210
+msgid "Open the InPost carrier website"
+msgstr "Otwórz stronę przewoźnika InPost"
+
+#: .subversion/tags/1.1.0/assets/sub-poczta.php:169
+msgid "Shipping - Self Pickup (Polish Post)"
+msgstr "Wysyłka - Odbiór w punkcie (Poczta Polska)"
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:34
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:91
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:37
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:59
+#: .subversion/trunk/code/components/EasyPack.php:37
+#: .subversion/trunk/code/components/EasyPack.php:59
+#: code/components/EasyPack.php:37 code/components/EasyPack.php:59
+msgid "Self Pickup - InPost Paczkomaty"
+msgstr "Odbiór własny - InPost Paczkomaty"
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:35
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:38
+#: .subversion/trunk/code/components/EasyPack.php:38
+#: code/components/EasyPack.php:38
+msgid "Pickup at InPost Paczkomaty"
+msgstr "Odbiór w InPost Paczkomaty"
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:101
+msgid "Enable pickup in Parcel Lockers"
+msgstr "Włącz odbiór w paczkomatach"
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:102
+msgid "If you select this option, pickup will be possible at Parcel Lockers."
+msgstr "Jeśli wybierzesz tę opcję, odbiór będzie możliwy w paczkomatach."
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:107
+msgid "Enable pickup in POP"
+msgstr "Włącz odbiór w Punktach Obsługi Paczek"
+
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:108
+msgid ""
+"If you select this option, pickup will be possible at Parcel Collection "
+"Points."
 msgstr ""
-"Jeśli jest zaznaczona, umożliwia bezpłatną wysyłkę po cenie brutto "
-"wymienionej poniżej."
+"Jeśli wybierzesz tę opcję, odbiór będzie możliwy w punktach odbioru paczek."
 
-#: code/components/EasyPack.php:96 code/components/Poczta.php:101
-msgid "Free shipping for orders above"
-msgstr "Bezpłatna wysyłka dla zamówień powyżej"
-
-#: code/components/EasyPack.php:97 code/components/Poczta.php:102
-#, php-format
-msgid "Default %s"
-msgstr "Domyślnie: %s"
-
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:113
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:103
+#: .subversion/trunk/code/components/EasyPack.php:103
 #: code/components/EasyPack.php:103
 msgid "Enable geolocation"
 msgstr "Włącz geolokalizację"
 
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-easypack.php:114
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:104
+#: .subversion/trunk/code/components/EasyPack.php:104
 #: code/components/EasyPack.php:104
 msgid ""
 "If you enable this option, the pickup point will be proposed based on your "
@@ -106,10 +515,123 @@ msgstr ""
 "Jeśli wybierzesz tę opcję, punkt odbioru zostanie zaproponowany na podstawie "
 "glokalizacji."
 
+#: .subversion/tags/1.1.0/assets/woocommerce/shipping-poczta.php:34
+#: .subversion/tags/1.2.0/code/components/Poczta.php:27
+#: .subversion/tags/1.2.0/code/components/Poczta.php:49
+#: .subversion/trunk/code/components/Poczta.php:27
+#: .subversion/trunk/code/components/Poczta.php:49
+#: code/components/Poczta.php:27 code/components/Poczta.php:49
+msgid "Self Pickup - Polish Post"
+msgstr "Odbiór własny - Poczta Polska"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:64
+#: .subversion/trunk/code/components/EasyPack.php:64
+#: code/components/EasyPack.php:64
+#, php-format
+msgid "Cost (Size %s)"
+msgstr "Koszt (rozmiar %s)"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:65
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:128
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:144
+#: .subversion/tags/1.2.0/code/components/Poczta.php:55
+#: .subversion/trunk/code/components/EasyPack.php:65
+#: .subversion/trunk/code/components/EasyPack.php:128
+#: .subversion/trunk/code/components/EasyPack.php:144
+#: .subversion/trunk/code/components/Poczta.php:55
+#: code/components/EasyPack.php:65 code/components/EasyPack.php:128
+#: code/components/EasyPack.php:144 code/components/Poczta.php:55
+#, php-format
+msgid "Primary cost (default is %s net)"
+msgstr "Koszt podstawowy (wartość domyślna to %s netto)"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:71
+#: .subversion/tags/1.2.0/code/components/Poczta.php:61
+#: .subversion/trunk/code/components/EasyPack.php:71
+#: .subversion/trunk/code/components/Poczta.php:61
+#: code/components/EasyPack.php:71 code/components/Poczta.php:61
+msgid "Pickup points"
+msgstr "Punkty odbioru"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:72
+#: .subversion/tags/1.2.0/code/components/Poczta.php:62
+#: .subversion/trunk/code/components/EasyPack.php:72
+#: .subversion/trunk/code/components/Poczta.php:62
+#: code/components/EasyPack.php:72 code/components/Poczta.php:62
+msgid "Select which pickup points should be available"
+msgstr "Wybierz, które punkty odbioru powinny być dostępne"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:75
+#: .subversion/trunk/code/components/EasyPack.php:75
+#: code/components/EasyPack.php:75
+msgid "Parcel collection point (POP)"
+msgstr "Punkt odbioru paczek (POP)"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:76
+#: .subversion/trunk/code/components/EasyPack.php:76
+#: code/components/EasyPack.php:76
+msgid "Parcel Locker"
+msgstr "Paczkomat"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:82
+#: .subversion/tags/1.2.0/code/components/Poczta.php:87
+#: .subversion/trunk/code/components/EasyPack.php:82
+#: .subversion/trunk/code/components/Poczta.php:87
+#: code/components/EasyPack.php:82 code/components/Poczta.php:87
+msgid "Weight limit"
+msgstr "Limit wagi"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:83
+#: .subversion/tags/1.2.0/code/components/Poczta.php:88
+#: .subversion/trunk/code/components/EasyPack.php:83
+#: .subversion/trunk/code/components/Poczta.php:88
+#: code/components/EasyPack.php:83 code/components/Poczta.php:88
+msgid "Total weight limit, above which the shipping option will not show up."
+msgstr "Całkowity limit wagi, powyżej którego opcja wysyłki nie pojawi się."
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:89
+#: .subversion/tags/1.2.0/code/components/Poczta.php:94
+#: .subversion/trunk/code/components/EasyPack.php:89
+#: .subversion/trunk/code/components/Poczta.php:94
+#: code/components/EasyPack.php:89 code/components/Poczta.php:94
+msgid "Allow free shipping"
+msgstr "Zezwól na darmową dostawę"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:90
+#: .subversion/tags/1.2.0/code/components/Poczta.php:95
+#: .subversion/trunk/code/components/EasyPack.php:90
+#: .subversion/trunk/code/components/Poczta.php:95
+#: code/components/EasyPack.php:90 code/components/Poczta.php:95
+msgid "If checked, it allows free shipping on the gross price listed below."
+msgstr ""
+"Jeśli jest zaznaczona, umożliwia bezpłatną wysyłkę po cenie brutto "
+"wymienionej poniżej."
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:96
+#: .subversion/tags/1.2.0/code/components/Poczta.php:101
+#: .subversion/trunk/code/components/EasyPack.php:96
+#: .subversion/trunk/code/components/Poczta.php:101
+#: code/components/EasyPack.php:96 code/components/Poczta.php:101
+msgid "Free shipping for orders above"
+msgstr "Bezpłatna wysyłka dla zamówień powyżej"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:97
+#: .subversion/tags/1.2.0/code/components/Poczta.php:102
+#: .subversion/trunk/code/components/EasyPack.php:97
+#: .subversion/trunk/code/components/Poczta.php:102
+#: code/components/EasyPack.php:97 code/components/Poczta.php:102
+#, php-format
+msgid "Default %s"
+msgstr "Domyślnie: %s"
+
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:111
+#: .subversion/trunk/code/components/EasyPack.php:111
 #: code/components/EasyPack.php:111
 msgid "Enable calculation of the package size"
 msgstr "Włącz obliczanie rozmiaru paczki"
 
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:112
+#: .subversion/trunk/code/components/EasyPack.php:112
 #: code/components/EasyPack.php:112
 msgid ""
 "If you enable this option, the plugin will try to determine the package size "
@@ -118,146 +640,169 @@ msgstr ""
 "Jeśli włączysz tę opcję, wtyczka spróbuje określić rozmiar paczki, a "
 "następnie zaproponuje cenę na jej podstawie."
 
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:119
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:135
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:151
+#: .subversion/trunk/code/components/EasyPack.php:119
+#: .subversion/trunk/code/components/EasyPack.php:135
+#: .subversion/trunk/code/components/EasyPack.php:151
 #: code/components/EasyPack.php:119 code/components/EasyPack.php:135
 #: code/components/EasyPack.php:151
 #, php-format
 msgid "Dimensions limit (Size %s)"
 msgstr "Limit wymiarów (rozmiar %s)"
 
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:120
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:136
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:152
+#: .subversion/trunk/code/components/EasyPack.php:120
+#: .subversion/trunk/code/components/EasyPack.php:136
+#: .subversion/trunk/code/components/EasyPack.php:152
 #: code/components/EasyPack.php:120 code/components/EasyPack.php:136
 #: code/components/EasyPack.php:152
 #, php-format
 msgid "Dimensions for size %s (default is %s)"
 msgstr "Wymiary dla rozmiaru %s (domyślnie %s)"
 
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:127
+#: .subversion/tags/1.2.0/code/components/EasyPack.php:143
+#: .subversion/trunk/code/components/EasyPack.php:127
+#: .subversion/trunk/code/components/EasyPack.php:143
 #: code/components/EasyPack.php:127 code/components/EasyPack.php:143
 #, php-format
 msgid "Cost for size %s"
 msgstr "Koszt rozmiaru %s"
 
-#: code/components/Poczta.php:27 code/components/Poczta.php:49
-msgid "Self Pickup - Polish Post"
-msgstr "Odbiór własny - Poczta Polska"
-
-#: code/components/Poczta.php:28
-msgid "Pickup at Żabka, Orlen, Biedronka, Ruch and Poczta Polska"
-msgstr "Odbiór w punktach Żabka, Orlen, Biedronka, Ruch i Poczta Polska"
-
-#: code/components/Poczta.php:54
-msgid "Cost"
-msgstr "Koszt"
-
+#: .subversion/tags/1.2.0/code/components/Poczta.php:65
+#: .subversion/trunk/code/components/Poczta.php:65
 #: code/components/Poczta.php:65
 msgid "Poczta"
 msgstr "Poczta"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:66
+#: .subversion/trunk/code/components/Poczta.php:66
 #: code/components/Poczta.php:66
 msgid "Orlen petrol stations"
 msgstr "Stacje benzynowe Orlen"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:67
+#: .subversion/trunk/code/components/Poczta.php:67
 #: code/components/Poczta.php:67
 msgid "Post Pickup machine"
 msgstr "Automat na Poczcie"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:68
+#: .subversion/trunk/code/components/Poczta.php:68
 #: code/components/Poczta.php:68
 msgid "Ruch store"
 msgstr "Sklep Ruch"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:69
+#: .subversion/trunk/code/components/Poczta.php:69
 #: code/components/Poczta.php:69
 msgid "Żabka store"
 msgstr "Sklep Żabka"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:70
+#: .subversion/trunk/code/components/Poczta.php:70
 #: code/components/Poczta.php:70
 msgid "Freshmarket store"
 msgstr "Sklep Freshmarket"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:71
+#: .subversion/trunk/code/components/Poczta.php:71
 #: code/components/Poczta.php:71
 msgid "Biedronka store Pickup machine"
 msgstr "Punkt odbioru w Biedronce"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:72
+#: .subversion/trunk/code/components/Poczta.php:72
 #: code/components/Poczta.php:72
 msgid "Carrefour store Pickup machine"
 msgstr "Punkt odbioru w Carrefour"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:73
+#: .subversion/trunk/code/components/Poczta.php:73
 #: code/components/Poczta.php:73
 msgid "Post Office Pickup machine"
 msgstr "Punkt odbioru w Poczcie Polskiej"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:74
+#: .subversion/trunk/code/components/Poczta.php:74
 #: code/components/Poczta.php:74
 msgid "Społem store Pickup machine"
 msgstr "Punkt odbioru w Społem"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:75
+#: .subversion/trunk/code/components/Poczta.php:75
 #: code/components/Poczta.php:75
 msgid "Post mailbox"
 msgstr "Skrzynka pocztowa"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:76
+#: .subversion/trunk/code/components/Poczta.php:76
 #: code/components/Poczta.php:76
 msgid "Lewiatan store Pickup machine"
 msgstr "Punkt odbioru w Lewiatanie"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:77
+#: .subversion/trunk/code/components/Poczta.php:77
 #: code/components/Poczta.php:77
 msgid "Lewiatan store"
 msgstr "Sklep Lewiatan"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:78
+#: .subversion/trunk/code/components/Poczta.php:78
 #: code/components/Poczta.php:78
 msgid "ABC store"
 msgstr "Sklep ABC"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:79
+#: .subversion/trunk/code/components/Poczta.php:79
 #: code/components/Poczta.php:79
 msgid "Deli Center store"
 msgstr "Sklep Delikatesy Centrum"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:80
+#: .subversion/trunk/code/components/Poczta.php:80
 #: code/components/Poczta.php:80
 msgid "Biedronka store"
 msgstr "Sklep Biedronka"
 
+#: .subversion/tags/1.2.0/code/components/Poczta.php:81
+#: .subversion/trunk/code/components/Poczta.php:81
 #: code/components/Poczta.php:81
 msgid "Kaufland store"
 msgstr "Sklep Kaufland"
 
-#: code/core/Actions.php:60
+#: .subversion/tags/1.2.0/code/core/Actions.php:60
+#: .subversion/trunk/code/core/Actions.php:60 code/core/Actions.php:61
 msgid "Shipping"
 msgstr "Wysyłka"
 
-#: code/core/Actions.php:68
+#: .subversion/tags/1.2.0/code/core/Actions.php:68
+#: .subversion/trunk/code/core/Actions.php:68 code/core/Actions.php:69
 msgid "Important Upgrade Notice"
 msgstr "Ważna informacja o uaktualnieniu"
 
-#: code/core/Actions.php:205
-msgid "Select a pickup point"
-msgstr "Wybierz punkt odbioru"
-
-#: code/core/Actions.php:211
-msgid "Pickup point name"
-msgstr "Nazwa punktu odbioru"
-
-#: code/core/Actions.php:212 code/views/summary-depracted.php:107
-#: code/views/summary.php:94
-msgid "Pickup point address"
-msgstr "Adres punktu odbioru"
-
-#: code/core/Actions.php:231
-msgid "There was an error in the form. No fields with pickup address found"
-msgstr ""
-"Wystąpił błąd w formularzu. Nie znaleziono pól z adresem punktu odbioru"
-
-#: code/core/Actions.php:235
+#: .subversion/tags/1.2.0/code/core/Actions.php:235
+#: .subversion/trunk/code/core/Actions.php:235 code/core/Actions.php:236
 msgid "You must select a <strong>pickup point</strong>"
 msgstr "Musisz wybrać <strong>punkt odbioru</strong>"
 
-#: code/core/Actions.php:248
-#, php-format
-msgid "'%s' pickup point is invalid. Form error?"
-msgstr "Punkt odbioru '%s' jest niepoprawny. Błąd formularza?"
-
-#: code/core/Actions.php:302
+#: .subversion/tags/1.2.0/code/core/Actions.php:302
+#: .subversion/trunk/code/core/Actions.php:302 code/core/Actions.php:339
 msgid "Pickup point has not been selected as shipping method."
 msgstr "Punkt odbioru nie został wybrany jako metoda wysyłki."
 
+#: .subversion/tags/1.2.0/code/core/ShippingMethod.php:34
+#: .subversion/trunk/code/core/ShippingMethod.php:34
 #: code/core/ShippingMethod.php:34
 msgid "All in all, I'd like more features"
 msgstr "W sumie, chciałbym więcej funkcji"
 
+#: .subversion/tags/1.2.0/code/core/ShippingMethod.php:158
+#: .subversion/trunk/code/core/ShippingMethod.php:158
 #: code/core/ShippingMethod.php:158
 msgid ""
 "This plugin is free, but it takes time to add new features and fix bugs."
@@ -265,6 +810,8 @@ msgstr ""
 "Ta wtyczka jest darmowa, ale wymaga czasu, aby dodawać nowe funkcje i "
 "naprawiać błędy."
 
+#: .subversion/tags/1.2.0/code/core/ShippingMethod.php:160
+#: .subversion/trunk/code/core/ShippingMethod.php:160
 #: code/core/ShippingMethod.php:160
 msgid ""
 "If you want to support us and speed up the development of the plugin, "
@@ -273,11 +820,13 @@ msgstr ""
 "Jeśli chcesz nas wesprzeć i przyspieszyć rozwój wtyczki, skontaktuj się z "
 "nami."
 
-#: code/views/customer.php:16
+#: .subversion/tags/1.2.0/code/views/customer.php:16
+#: .subversion/trunk/code/views/customer.php:16 code/views/customer.php:16
 msgid "Self pickup"
 msgstr "Odbiór własny"
 
-#: code/views/customer.php:18
+#: .subversion/tags/1.2.0/code/views/customer.php:18
+#: .subversion/trunk/code/views/customer.php:18 code/views/customer.php:18
 msgid ""
 "You have chosen pickup as the shipping method. Your package will be "
 "delivered to the selected point:"
@@ -285,35 +834,47 @@ msgstr ""
 "Jako metodę wysyłki wybrano odbiór osobisty. Twoja paczka zostanie "
 "dostarczona do wybranego punktu:"
 
-#: code/views/notice.php:15
+#: .subversion/tags/1.2.0/code/views/notice.php:15
+#: .subversion/trunk/code/views/notice.php:15 code/views/notice.php:15
 msgid "WC Poczta"
 msgstr "WC Poczta"
 
-#: code/views/notice.php:16
+#: .subversion/tags/1.2.0/code/views/notice.php:16
+#: .subversion/trunk/code/views/notice.php:16 code/views/notice.php:16
 msgid "Done!"
 msgstr "Gotowe!"
 
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:44
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:54
+#: .subversion/tags/1.2.0/code/views/summary.php:42
+#: .subversion/trunk/code/views/summary-depracted.php:44
+#: .subversion/trunk/code/views/summary-depracted.php:54
+#: .subversion/trunk/code/views/summary.php:42
 #: code/views/summary-depracted.php:44 code/views/summary-depracted.php:54
 #: code/views/summary.php:42
 msgid "Unknown"
 msgstr "Nieznana"
 
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:73
+#: .subversion/tags/1.2.0/code/views/summary.php:60
+#: .subversion/trunk/code/views/summary-depracted.php:73
+#: .subversion/trunk/code/views/summary.php:60 code/core/Actions.php:302
+#: code/core/Actions.php:315 code/core/Actions.php:316
+#: code/core/Actions.php:317 code/core/Actions.php:318
 #: code/views/summary-depracted.php:73 code/views/summary.php:60
 msgid "Pickup point"
 msgstr "Punkt odbioru"
 
-#: code/views/summary-depracted.php:80 code/views/summary.php:67
-msgid "Phone"
-msgstr "Telefon"
-
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:90
+#: .subversion/tags/1.2.0/code/views/summary.php:77
+#: .subversion/trunk/code/views/summary-depracted.php:90
+#: .subversion/trunk/code/views/summary.php:77 code/core/Actions.php:305
 #: code/views/summary-depracted.php:90 code/views/summary.php:77
 msgid "Weight"
 msgstr "Waga"
 
-#: code/views/summary-depracted.php:97 code/views/summary.php:84
-msgid "Type"
-msgstr "Typ"
-
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:138
+#: .subversion/trunk/code/views/summary-depracted.php:138
 #: code/views/summary-depracted.php:138
 msgid ""
 "Above information comes from the old plugin version. This data may disappear "
@@ -322,9 +883,17 @@ msgstr ""
 "Powyższe informacje pochodzą ze starej wersji wtyczki. Te dane mogą zniknąć "
 "podczas przyszłych aktualizacji."
 
+#: .subversion/tags/1.2.0/code/views/summary-depracted.php:147
+#: .subversion/tags/1.2.0/code/views/summary.php:123
+#: .subversion/trunk/code/views/summary-depracted.php:147
+#: .subversion/trunk/code/views/summary.php:123
 #: code/views/summary-depracted.php:147 code/views/summary.php:123
 msgid "The data has been copied to the clipboard."
 msgstr "Dane zostały skopiowane do schowka."
+
+#: code/core/Actions.php:300 code/core/Actions.php:314
+msgid "Delivery to the pickup point"
+msgstr "Dostawa do punktu odbioru"
 
 #. Plugin Name of the plugin/theme
 msgid ""
@@ -376,174 +945,9 @@ msgstr "https://rdev.cc/"
 #~ msgid "Maximum allowed weight (default is 25kg)"
 #~ msgstr "Maksymalna dopuszczalna waga (domyślnie to 25 kg)"
 
-#~ msgid "Enable pickup in Parcel Lockers"
-#~ msgstr "Włącz odbiór w paczkomatach"
-
-#~ msgid ""
-#~ "If you select this option, pickup will be possible at Parcel Lockers."
-#~ msgstr "Jeśli wybierzesz tę opcję, odbiór będzie możliwy w paczkomatach."
-
-#~ msgid "Enable pickup in POP"
-#~ msgstr "Włącz odbiór w Punktach Obsługi Paczek"
-
-#~ msgid ""
-#~ "If you select this option, pickup will be possible at Parcel Collection "
-#~ "Points."
-#~ msgstr ""
-#~ "Jeśli wybierzesz tę opcję, odbiór będzie możliwy w punktach odbioru "
-#~ "paczek."
-
-#~ msgid "Self Pickup - Żabka, Orlen, Ruch"
-#~ msgstr "Obiór w punkcie - Żabka, Orlen, Ruch"
-
-#~ msgid "Primary cost (default is PLN 10.94 + 23% VAT)"
-#~ msgstr "Podstawowy koszt (domyślnie 10.94 zł + 23% VAT)"
-
-#~ msgid "Weight (kg)"
-#~ msgstr "Waga (kg)"
-
-#~ msgid "Maximum allowed weight (default is 20kg)"
-#~ msgstr "Maksymalna dopuszczalna waga (domyślnie 20kg)"
-
-#~ msgid "Enable pickup in Polish Post offices"
-#~ msgstr "Włącz odbiór w placówkach Poczty Polskiej"
-
-#~ msgid ""
-#~ "If you select this option, Polish Post offices will appear among the "
-#~ "collection points."
-#~ msgstr ""
-#~ "Jeśli zaznaczysz tę opcję, placówki Poczty Polskiej pojawią się jako "
-#~ "jeden z punktów odbioru."
-
-#~ msgid "Enable pickup in Żabka"
-#~ msgstr "Włącz odbiór w Żabce"
-
-#~ msgid ""
-#~ "If you select this option, Żabka stores will appear among the collection "
-#~ "points."
-#~ msgstr ""
-#~ "Jeśli zaznaczysz tę opcję, sklepy Żabka pojawią się jako jeden z punktów "
-#~ "odbioru."
-
-#~ msgid "Enable pickup in Ruch"
-#~ msgstr "Włącz odbiór w kioskach Ruch"
-
-#~ msgid ""
-#~ "If you select this option, Ruch stores will appear among the collection "
-#~ "points."
-#~ msgstr ""
-#~ "Jeśli zaznaczysz tę opcję, kioski Ruch pojawią się jako jeden z punktów "
-#~ "odbioru."
-
-#~ msgid "Enable pickup in Orlen"
-#~ msgstr "Włącz odbiór na stacjach Orlen"
-
-#~ msgid ""
-#~ "If you select this option, Orlen petrol stations will appear among the "
-#~ "collection points."
-#~ msgstr ""
-#~ "Jeśli zaznaczysz tę opcję, stacje Orlen pojawią się jako jeden z punktów "
-#~ "odbioru."
-
-#~ msgid "Enable pickup in postal automats"
-#~ msgstr "Włącz odbiór w automatach pocztowych"
-
-#~ msgid ""
-#~ "If you select this option, Polish Post postal automats will appear among "
-#~ "the collection points."
-#~ msgstr ""
-#~ "Jeśli zaznaczysz tę opcję, automaty Poczty Polskiej pojawią się jako "
-#~ "jeden z punktów odbioru."
-
-#~ msgid "You must select a pickup point"
-#~ msgstr "Musisz wybrać punkt odbioru"
-
-#~ msgid "Shipping - Self Pickup"
-#~ msgstr "Wysyłka - Odbiór w punkcie"
-
-#~ msgid ""
-#~ "You have decided to collect your package at the pickup point.<br/>Here "
-#~ "are the pickup point details:"
-#~ msgstr ""
-#~ "Zdecydowałaś/eś się na odbiór w punkcie.<br/>Poniżej znajdują się "
-#~ "informacje o wybranym punkcie odbioru:"
-
-#~ msgid "Point name"
-#~ msgstr "Nazwa punktu odbioru"
-
-#~ msgid "Parcel locker"
-#~ msgstr "Paczkomat"
-
-#~ msgid "Address"
-#~ msgstr "Adres"
-
-#~ msgid "Shipping - Self Pickup (InPost)"
-#~ msgstr "Wysyłka - Odbiór w punkcie (InPost Paczkomaty)"
-
-#~ msgid "Customer has chosen to ship to a pickup point"
-#~ msgstr "Klient wybrał odbiór w punkcie"
-
-#~ msgid "Opened 24/7"
-#~ msgstr "Otwarte 24/7"
-
-#~ msgid "Yes"
-#~ msgstr "Tak"
-
-#~ msgid "No"
-#~ msgstr "Nie"
-
-#~ msgid "Zip-Code"
-#~ msgstr "Kod pocztowy"
-
-#~ msgid "Province"
-#~ msgstr "Województwo"
-
-#~ msgid "Open the InPost carrier website"
-#~ msgstr "Otwórz stronę przewoźnika InPost"
-
-#~ msgid "Shipping - Self Pickup (Polish Post)"
-#~ msgstr "Wysyłka - Odbiór w punkcie (Poczta Polska)"
-
-#~ msgid "Street"
-#~ msgstr "Ulica"
-
-#~ msgid "City"
-#~ msgstr "Miasto"
-
-#~ msgid "Export file for upload in Envelo"
-#~ msgstr "Eksportuj plik do wgrania w Envelo"
-
-#~ msgid "Open the Envelo carrier website"
-#~ msgstr "Otwórz stronę przewoźnika Envelo"
-
 #, php-format
 #~ msgid "Maximum allowed weight (default is %skg)"
 #~ msgstr "Maksymalna dopuszczalna waga (domyślnie %skg)"
-
-#, php-format
-#~ msgid "Sorry, %d kg exceeds the maximum weight of %d kg for %s"
-#~ msgstr ""
-#~ "Przepraszamy, waga %dkg przekracza maksymalną, dopuszczalną wagę %dkg dla "
-#~ "wysyłki %s"
-
-#~ msgid "Polish Post - Self Pickup"
-#~ msgstr "Poczta Polska - Odbiór w punkcie"
-
-#~ msgid "Enable plugin"
-#~ msgstr "Włącz wtyczkę"
-
-#~ msgid "Enable this shipping."
-#~ msgstr "Włącz tę metodę wysyłki."
-
-#~ msgid "Include tax"
-#~ msgstr "Zawiera podatek"
-
-#~ msgid ""
-#~ "If you check this option, the shipping option will be subject to tax."
-#~ msgstr "Jeśli zaznaczysz tę opcję, ta opcja wysyłki zostanie opodatkowana."
-
-#~ msgid "Primary cost (default is PLN 13.45)"
-#~ msgstr "Podstawowy koszt (domyślnie 13.45 zł)"
 
 #~ msgid "RapidDev"
 #~ msgstr "RapidDev"

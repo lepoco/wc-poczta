@@ -11,7 +11,7 @@
 
 namespace WCPoczta\Code\Core;
 
-use \WC_Shipping_Method;
+use WC_Shipping_Method;
 use WCPoczta\Code\Core\Bootstrap;
 
 abstract class ShippingMethod extends WC_Shipping_Method
