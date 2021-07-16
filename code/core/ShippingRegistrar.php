@@ -6,7 +6,7 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 namespace WCPoczta\Code\Core;
@@ -15,16 +15,15 @@ use WCPoczta\Code\Core\Bootstrap;
 
 final class ShippingRegistrar
 {
-  private $bootstrap = null;
+  private ?Bootstrap $bootstrap = null;
 
-  private $methodId = '';
+  private ?string $methodId = '';
 
-  private $methodName = '';
+  private ?string $methodName = '';
 
+  private ?string $methodClassName = '';
 
-  private $methodClassName = '';
-
-  public static function register($bootstrap, $id, $method): self
+  public static function register(?Bootstrap $bootstrap, ?string $id, ?string $method): self
   {
     $instance = new self();
     $instance->setBootstrap($bootstrap);
@@ -43,7 +42,7 @@ final class ShippingRegistrar
     require_once $this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $this->methodName . '.php');
   }
 
-  public function wooAddMethod($methods): array
+  public function wooAddMethod(?array $methods): array
   {
     $methods[$this->methodId] = $this->methodClassName;
     return $methods;
@@ -54,17 +53,17 @@ final class ShippingRegistrar
     return $this->methodId;
   }
 
-  protected function setMethodId($id): void
+  protected function setMethodId(string $id): void
   {
     $this->methodId = $id;
   }
 
-  protected function setBootstrap($bootstrap): void
+  protected function setBootstrap(?Bootstrap $bootstrap): void
   {
     $this->bootstrap = $bootstrap;
   }
 
-  protected function registerMethod($name): bool
+  protected function registerMethod(string $name): bool
   {
     if (!is_file($this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $name . '.php'))) {
       return false;

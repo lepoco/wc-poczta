@@ -3,6 +3,7 @@ _old/
 
 ##### SVN
 .svn/
+.subversion/
 SVN/
 _SVN/
 

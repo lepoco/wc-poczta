@@ -6,16 +6,16 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 namespace WCPoczta\Code\Core;
 
+use WP_Post;
+
 final class Actions
 {
   private $bootstrap = null;
-
-  private $activeMethod = '';
 
   private $methods = [];
 
@@ -23,10 +23,10 @@ final class Actions
 
   public static function initialize($bootstrap, $methods): self
   {
-    return (new self())->registerMeta($bootstrap, $methods);
+    return (new self())->register($bootstrap, $methods);
   }
 
-  private function registerMeta($bootstrap, $methods): self
+  private function register($bootstrap, $methods): self
   {
     $this->bootstrap = $bootstrap;
     $this->methods = $methods;
@@ -35,24 +35,54 @@ final class Actions
       $this->methodsIds[] = $method->getMethodId();
     }
 
-    add_action('wp_enqueue_scripts', [$this, 'Scripts'], 99);
-    add_action('wp_head', [$this, 'FrontHead'], 99);
-    add_action('admin_notices', [$this, 'AdminNotice'], 20);
-
-    add_action('woocommerce_after_shipping_rate', [$this, 'customFields'], 20, 2);
-    add_action('woocommerce_checkout_process', [$this, 'customFieldsValidation']);
-    add_action('woocommerce_checkout_update_order_meta', [$this, 'customFieldsSave']);
-
-    add_action('add_meta_boxes', function () {
-      foreach (wc_get_order_types('order-meta-boxes') as $type) {
-        add_meta_box('woocommerce-order-wcpoczta', __('Shipping', Bootstrap::DOMAIN), [$this, 'metaAdmin'], $type, 'normal', 'high');
-      }
-    }, 30);
+    $this->addActions();
 
     return $this;
   }
 
-  public function Scripts(): void
+  private function addActions(): void
+  {
+    add_action('in_plugin_update_message-' . Bootstrap::SLUG . '/' . Bootstrap::SLUG . '.php', [$this, 'upgradeNotice'], 10, 2);
+    add_action('after_plugin_row_' . Bootstrap::SLUG . '/' . Bootstrap::SLUG . '.php', [$this, 'upgradeNoticeMultisite'], 10, 2);
+    //add_action('admin_notices', [$this, 'adminNotice'], 20);
+
+    add_action('wp_enqueue_scripts', [$this, 'scripts'], 99);
+    add_action('admin_enqueue_scripts', [$this, 'adminScripts'], 99);
+    add_action('wp_head', [$this, 'frontHead'], 99);
+
+    add_action('woocommerce_review_order_after_shipping', [$this, 'customFields'], 20);
+    add_action('woocommerce_checkout_process', [$this, 'customFieldsValidation']);
+    add_action('woocommerce_checkout_update_order_meta', [$this, 'customFieldsSave']);
+    add_action('woocommerce_order_details_after_customer_details', [$this, 'customDetails'], 1, 1);
+
+    add_action('add_meta_boxes', function () {
+      foreach (wc_get_order_types('order-meta-boxes') as $type) {
+        add_meta_box('woocommerce-order-wcpoczta', 'WC Poczta - ' . __('Shipping', Bootstrap::DOMAIN), [$this, 'metaAdmin'], $type, 'normal', 'high');
+      }
+    }, 30);
+  }
+
+  public function upgradeNotice($data, $response)
+  {
+    if (isset($response->upgrade_notice) && strlen(trim($response->upgrade_notice)) > 0) {
+      echo '<br><span class="wc-poczta__update" style="color: #d54e21"><strong>' . __('Important Upgrade Notice', Bootstrap::DOMAIN) . ':</strong><br>' . esc_html($response->upgrade_notice) . '</span>';
+    }
+  }
+
+  public function upgradeNoticeMultisite($file, $plugin)
+  {
+    if (is_multisite() && version_compare($plugin['Version'], $plugin['new_version'], '<')) {
+      $wp_list_table = _get_list_table('WP_Plugins_List_Table');
+      printf(
+        '<tr class="plugin-update-tr"><td colspan="%s" class="plugin-update update-message notice inline notice-warning notice-alt"><div class="update-message"><h4 style="margin: 0; font-size: 14px;">%s</h4>%s</div></td></tr>',
+        $wp_list_table->get_column_count(),
+        $plugin['Name'],
+        wpautop($plugin['upgrade_notice'])
+      );
+    }
+  }
+
+  public function scripts(): void
   {
     if (!function_exists('is_checkout')) {
       return;
@@ -63,14 +93,22 @@ final class Actions
     }
 
     //https://pp-widget.silk-sh.eu/widget/scripts/ppwidget.js
+    wp_enqueue_style('wc-poczta', $this->bootstrap->getPluginAsset('css/wc-poczta.min.css'), [], $this->bootstrap->getVersion(), 'all');
+    wp_enqueue_style('easypack24', 'https://geowidget.easypack24.net/css/easypack.css', [], $this->bootstrap->getVersion(), 'all');
 
-    wp_enqueue_style('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/css/easypack.css', [], $this->bootstrap->getVersion());
-    wp_enqueue_script('cdn-wcpoczta-easypack', 'https://geowidget.easypack24.net/js/sdk-for-javascript.js', [], $this->bootstrap->getVersion(), true);
-    wp_enqueue_script('cdn-wcpoczta-pocztapolska', 'https://mapa.ecommerce.poczta-polska.pl/widget/scripts/ppwidget.js', [], $this->bootstrap->getVersion(), true);
-    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('assets/js/wc-poczta.min.js'), [], $this->bootstrap->getVersion(), true);
+    wp_enqueue_script('easypack24', 'https://geowidget.easypack24.net/js/sdk-for-javascript.js', [], $this->bootstrap->getVersion(), true);
+    wp_enqueue_script('poczta-polska', 'https://mapa.ecommerce.poczta-polska.pl/widget/scripts/ppwidget.js', [], $this->bootstrap->getVersion(), true);
+    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('js/wc-poczta.min.js'), [], $this->bootstrap->getVersion(), true);
   }
 
-  public function FrontHead(): void
+  public function adminScripts(): void
+  {
+    wp_enqueue_style('wc-poczta', $this->bootstrap->getPluginAsset('css/wc-poczta.min.css'), [], $this->bootstrap->getVersion(), 'all');
+    wp_enqueue_script('clipboard-js', 'https://cdn.jsdelivr.net/npm/clipboard-js@0.3.6/clipboard.min.js', [], '0.3.6', true);
+    wp_enqueue_script('wc-poczta', $this->bootstrap->getPluginAsset('js/wc-poczta-admin.min.js'), [], $this->bootstrap->getVersion(), true);
+  }
+
+  public function frontHead(): void
   {
     if (!function_exists('is_checkout')) {
       return;
@@ -80,38 +118,49 @@ final class Actions
       return;
     }
 
-    $data = [
+    echo '<script type="text/javascript">const WCPOCZTA = ' . json_encode([
       'uri' => 'https://rdev.cc/',
       'prefix' => Bootstrap::PREFIX,
       'domain' => Bootstrap::DOMAIN,
       'version' => $this->bootstrap->getVersion(),
       'methods' => $this->methodsIds,
-    ];
-
-    echo '<style type="text/css">.wc-poczta__button {width: 100%;;margin-bottom: 15px} .wc-poczta, .wc-poczta-input, .wc-poczta-input > input {width: 100%;} .wc-poczta__container {margin-bottom:20px;}</style>';
-    echo '<script type="text/javascript">const WCPOCZTA = ' . json_encode($data, JSON_UNESCAPED_UNICODE) . '</script>';
+    ], JSON_UNESCAPED_UNICODE) . '</script>';
   }
 
-  public function AdminNotice(): void
+  public function adminNotice(): void
   {
-    $html  = '<div class="notice notice-success is-dismissible"><p>';
-    $html .= '<strong>' . __('WC Poczta', 'sample-text-domain') . '</strong>';
-    $html .= '<br>' . __('Done!', 'sample-text-domain') . '';
-    $html .= '</p></div>';
-
-    echo $html;
+    $this->bootstrap->getPluginView('notice');
   }
 
-  public function customFields($method, $index): void
+  public function customFields(): void
   {
-    if (!in_array($method->method_id, $this->methodsIds)) {
+    if (!function_exists('is_checkout')) {
       return;
     }
 
-    if (!$this->isSelectedMethod($method, $index)) {
+    if (!is_checkout()) {
       return;
     }
 
+    $shippingMethods = WC()->session->get('chosen_shipping_methods');
+
+    if (!is_array($shippingMethods)) {
+      return;
+    }
+
+    if (count($shippingMethods) < 1) {
+      return;
+    }
+
+    $methodId = array_shift($shippingMethods);
+
+    if (!in_array($methodId, $this->methodsIds)) {
+      return;
+    }
+
+    $selectedMethod = $this->getShippingMethod($methodId);
+    $currentAddress = trim(WC()->checkout->get_value('wc-poczta__input--address') . ' ' . WC()->checkout->get_value('wc-poczta__input--city'));
+    $buttonDataSettings = '';
     $hiddenFields = [
       'wc-poczta__input--raw',
       'wc-poczta__input--id',
@@ -122,10 +171,6 @@ final class Actions
       'wc-poczta__input--zipcode',
       'wc-poczta__input--province'
     ];
-
-    $selectedMethod = $this->getShippingMethod($method->method_id);
-    $currentAddress = trim(WC()->checkout->get_value('wc-poczta__input--address') . ' ' . WC()->checkout->get_value('wc-poczta__input--city'));
-    $buttonDataSettings = '';
 
     if (null !== $selectedMethod) {
       foreach ($selectedMethod->instance_settings as $key => $value) {
@@ -139,24 +184,35 @@ final class Actions
 
             $buttonDataSettings .= ' ' . 'data-s-points="' . $points . '"';
           }
-        } else if (!in_array($key, ['wppoczta_tip', 'free_above', 'free_enable'])) {
+        } else if (!in_array($key, ['wc_poczta_tip', 'free_above', 'free_enable'])) {
           $buttonDataSettings .= ' ' . 'data-s-' . $key . '="' . $value . '"';
         }
       }
     }
 
-    $html = '';
-    $html .= '<div class="wc-poczta wc-poczta__container ' . $method->method_id . '">';
-    $html .= '<p class="form-row form-row-wide"><button type="button" class="button wc-poczta__button" data-method="' . $method->method_id . '"' . $buttonDataSettings . '>' . __('Select a pickup point', Bootstrap::DOMAIN) . '</button></p>';
+    /** @var WC_Theme */
+    $theme = wp_get_theme();
+    $containerPre = '<tr class="wc-poczta wc-poczta-select-point"><td colspan="2">';
+    $containerSuf = '</td></tr>';
+
+    if('Storefront' == $theme->Name) {
+      $containerPre = '<tr class="wc-poczta wc-poczta-select-point"><th colspan="2">';
+      $containerSuf = '</th></tr>';
+    }
+
+    $html = $containerPre;
+    $html .= '<div class="wc-poczta__container ' . $methodId . '">';
+    $html .= '<p class="form-row form-row-wide"><button type="button" class="button wc-poczta__button" data-method="' . $methodId . '"' . $buttonDataSettings . '>' . __('Select a pickup point', Bootstrap::DOMAIN) . '</button></p>';
 
     foreach ($hiddenFields as $field) {
       $html .= '<input type="hidden" name="' . $field . '" id="' . $field . '" value="" data-kpxc-id="' . $field . '">';
     }
 
-    $html .= '<p class="form-row form-row-wide wc-poczta-input"><input disabled="disabled" type="text" class="input-text " name="wc-poczta__input--carrier" id="wc-poczta__input--carrier" placeholder="' . __('Pickup point name', Bootstrap::DOMAIN) . '" value="' . WC()->checkout->get_value('wc-poczta__input--name') . '"></p>';
-    $html .= '<p class="form-row form-row-wide wc-poczta-input"><input disabled="disabled" type="text" class="input-text " name="wc-poczta__input--carrier_address" id="wc-poczta__input--carrier_address" placeholder="' . __('Pickup point address', Bootstrap::DOMAIN) . '" value="' . $currentAddress . '"></p>';
+    $html .= '<p class="form-row form-row-wide wc-poczta-input"><input disabled="disabled" type="text" class="input-text wc-poczta__input" name="wc-poczta__input--carrier" id="wc-poczta__input--carrier" placeholder="' . __('Pickup point name', Bootstrap::DOMAIN) . '" value="' . WC()->checkout->get_value('wc-poczta__input--name') . '"></p>';
+    $html .= '<p class="form-row form-row-wide wc-poczta-input"><input disabled="disabled" type="text" class="input-text wc-poczta__input" name="wc-poczta__input--carrier_address" id="wc-poczta__input--carrier_address" placeholder="' . __('Pickup point address', Bootstrap::DOMAIN) . '" value="' . $currentAddress . '"></p>';
 
     $html .= '</div>';
+    $html .= $containerSuf;
 
     echo $html;
   }
@@ -193,7 +249,7 @@ final class Actions
     }
   }
 
-  public function customFieldsSave($orderId): void
+  public function customFieldsSave(int $orderId): void
   {
     if (!$this->verifyPostData('shipping_method')) {
       return;
@@ -213,11 +269,28 @@ final class Actions
     update_post_meta($orderId, '_wcpoczta_province', $this->getPostData('wc-poczta__input--province'));
   }
 
-  public function metaAdmin($post): void
+  /**
+   * @param Automattic\WooCommerce\Admin\Overrides\Order $order
+   */
+  public function customDetails($order): void
   {
-    echo '<style type="text/css">#woocommerce-order-wcpoczta>.postbox-header{display:none}#woocommerce-order-wcpoczta .inside{padding:23px 24px;margin:0;}</style>';
+    $orderId = $order->get_id();
+    $wcpId = get_post_meta($orderId, '_wcpoczta_id', true);
 
-    $__bc = $this->__backwardCompatibility($post);
+    if (empty($wcpId)) {
+      return;
+    }
+
+    $this->bootstrap->getPluginView('customer', ['id' => $orderId, 'wcpId' => $wcpId, 'order' => $order, 'weight' => $this->getTotalWeight($order)]);
+  }
+
+  public function metaAdmin(?WP_Post $post): void
+  {
+    $shippingId = '';
+    $wcpId = get_post_meta($post->ID, '_wcpoczta_id', true);
+    $order = wc_get_order($post->ID);
+
+    $__bc = $this->__backwardCompatibility($post, $order);
 
     if (!empty($__bc)) {
       echo $__bc;
@@ -225,26 +298,21 @@ final class Actions
       return;
     }
 
-    $wcpId = get_post_meta($post->ID, '_wcpoczta_id', true);
-
     if (empty($wcpId)) {
-      echo __('Pickup point has not been selected as shipping method.', Bootstrap::DOMAIN);
+      echo '<div class="wc-poczta-order">' . __('Pickup point has not been selected as shipping method.', Bootstrap::DOMAIN) . '</div>';
 
       return;
     }
-    //dump($post);
-    //I know it's really rude, but it works.
-    //echo '</div></div></div><div><div><div>';
-    // echo '</div><div>';
 
-    // $orderId = $order->get_id();
-    // dump($order);
+    $shippingMethods = $order->get_shipping_methods();
 
-    dump(get_post_meta($post->ID, '_wcpoczta_city', true));
-    dump(get_post_meta($post->ID, '_wcpoczta_address', true));
+    if (is_array($shippingMethods)) {
+      foreach ($shippingMethods as $shippingMethod) {
+        $shippingId = $shippingMethod->get_method_id();
+      }
+    }
 
-    $data = get_post_meta($post->ID, '_wcpoczta_raw', true);
-    dump(json_decode($data, true));
+    $this->bootstrap->getPluginView('summary', ['methodId' => $shippingId, 'order' => $order, 'post' => $post, 'weight' => $this->getTotalWeight($order)]);
   }
 
   private function verifyPostData(string $key): bool
@@ -286,7 +354,33 @@ final class Actions
     return null;
   }
 
-  private function isSelectedMethod($method, $index): bool
+  /**
+   * @param \Automattic\WooCommerce\Admin\Overrides\Order $order
+   */
+  private function getTotalWeight($order): float
+  {
+    $weight = 0.0;
+
+    foreach ($order->get_items() as $productId => $product) {
+      $quantity = $product->get_quantity();
+      
+      $product = $product->get_product();
+      $productWeight = $product->get_weight();
+
+      if (!empty($productWeight)) {
+        $weight += floatval($productWeight * $quantity);
+      }
+    }
+
+    return (float) $weight;
+  }
+
+  /**
+   * Left depending on future needs
+   * @deprecated Since version 1.2.0
+   * @param WC_Shipping_Method $method
+   */
+  private function isSelectedMethod($method, int $index): bool
   {
     $choosenMethod = WC()->session->chosen_shipping_methods[$index];
 
@@ -294,17 +388,24 @@ final class Actions
   }
 
   /**
-   * This feature will be removed in the future, it returns the HTML value for pick points from the previous plugin version.
+   * Returns the HTML value for pick points from the previous plugin version.
+   * This feature will be removed in the future.
    * @deprecated Since version 1.2.0
+   * @param \Automattic\WooCommerce\Admin\Overrides\Order $order
    */
-  private function __backwardCompatibility($post): ?string
+  private function __backwardCompatibility(?WP_Post $post, $order): ?string
   {
-    $html = null;
-    //$html = 'te dane są ze starej wersji wtyczki';
+    $easypackPoint = get_post_meta($post->ID, '_rdev_sp_easypack_point', true);
+    $pocztaPoint = get_post_meta($post->ID, '_rdev_sp_poczta_pni', true);
 
-    if (null !== $html) {
-      $html .= '<p style="color:#777;"><small>' . __('Above information comes from the old plugin version. This data may disappear during future updates.', Bootstrap::DOMAIN) . '</small><br><a href="https://wordpress.org/plugins/wc-poczta/">wordpress.org/plugins/wc-poczta</a></p>';
+    if (!empty($easypackPoint)) {
+      return $this->bootstrap->getPluginView('summary-depracted', ['type' => 'easypack', 'post' => $post, 'order' => $order, 'weight' => $this->getTotalWeight($order)], true);
     }
-    return $html;
+
+    if (!empty($pocztaPoint)) {
+      return $this->bootstrap->getPluginView('summary-depracted', ['type' => 'poczta', 'post' => $post, 'order' => $order, 'weight' => $this->getTotalWeight($order)], true);
+    }
+
+    return null;
   }
 }

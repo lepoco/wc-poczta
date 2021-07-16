@@ -6,7 +6,7 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 namespace WCPoczta\Code\Core;
@@ -18,10 +18,6 @@ abstract class ShippingMethod extends WC_Shipping_Method
 {
   public const ROOT_DEFAULT_PRICE = 11.99;
 
-  public const CONTACT_NAME = 'rdev.cc/contact';
-
-  public const CONTACT_ADDRESS = 'https://rdev.cc/contact';
-
   private $settingsKeys = ['enabled', 'title', 'info'];
 
   public function __construct($instanceId = 0)
@@ -32,7 +28,7 @@ abstract class ShippingMethod extends WC_Shipping_Method
       $this->{'initialize'}();
     }
 
-    $this->addSetting('wppoczta_tip', [
+    $this->addSetting('wc_poczta_tip', [
       'type' => 'hidden',
       'description' => $this->getPluginTip(),
       'default' => __('All in all, I\'d like more features', Bootstrap::DOMAIN),
@@ -62,7 +58,7 @@ abstract class ShippingMethod extends WC_Shipping_Method
       return;
     }
 
-    $this->{'calculateShipping'}();
+    $this->{'calculateShipping'}($package);
   }
 
   public function getSettings(): array
@@ -142,18 +138,14 @@ abstract class ShippingMethod extends WC_Shipping_Method
     return WC()->cart->get_cart_contents_count();
   }
 
-  protected function getCartWeight()
+  protected function getCartWeight($package = [])
   {
-    $totalWeight = (float) 0;
-    $items = WC()->cart->get_cart();
-
-    foreach ($items as $item) {
-      if (isset($item['data'])) {
-        $productWeight = $item['data']->get_weight();
-
-        if (!empty($productWeight)) {
-          $totalWeight += floatval($productWeight);
-        }
+    $totalWeight = (float) 0.0;
+    foreach ($package['contents'] as $item_id => $values) {
+      $_product = $values['data'];
+      $productWeight = $_product->get_weight();
+      if (!empty($productWeight)) {
+        $totalWeight = $totalWeight + ($_product->get_weight() * $values['quantity']);
       }
     }
 
@@ -166,7 +158,7 @@ abstract class ShippingMethod extends WC_Shipping_Method
     $tipHtml .= __('This plugin is free, but it takes time to add new features and fix bugs.', Bootstrap::DOMAIN);
     $tipHtml .= '<br>';
     $tipHtml .= __('If you want to support us and speed up the development of the plugin, contact us.', Bootstrap::DOMAIN);
-    $tipHtml .= '<br><p><a class="button button-primary button-large" target="_blank" rel="noopener" href="' . self::CONTACT_ADDRESS . '">' . self::CONTACT_NAME . '</a>';
+    $tipHtml .= '<br><p><a class="button button-primary button-large" target="_blank" rel="noopener" href="' . Bootstrap::CONTACT_ADDRESS . '">' . Bootstrap::CONTACT_NAME . '</a>';
     $tipHtml .= ' <a class="button button-primary button-large" target="_blank" rel="noopener" href="https://www.paypal.com/paypalme/devcc">paypal.me/devcc</a></p>';
 
     return $tipHtml;

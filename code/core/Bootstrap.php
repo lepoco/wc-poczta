@@ -6,13 +6,15 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 namespace WCPoczta\Code\Core;
 
 final class Bootstrap
 {
+  public const SLUG = 'wc-poczta';
+
   public const DOMAIN = 'wc_poczta';
 
   public const PREFIX = 'wc_poczta_';
@@ -24,6 +26,10 @@ final class Bootstrap
   public const COMPONENTS_PATH = 'code\\components\\';
 
   public const COMPONENTS_NAMESPACE = '\\WCPoczta\\Code\\Components\\';
+
+  public const CONTACT_NAME = 'rdev.cc/contact';
+
+  public const CONTACT_ADDRESS = 'https://rdev.cc/contact';
 
   private $version = '';
 
@@ -49,10 +55,45 @@ final class Bootstrap
       $pluginUrl .= '/';
     }
 
-    return $pluginUrl . $assetPath;
+    return $pluginUrl . 'assets/' . $assetPath;
   }
 
-  public function getPluginPath($subPath = null): string
+  /**
+   * @return null|string|void
+   */
+  public function getPluginView(string $name, array $data = [], bool $obClean = false)
+  {
+    $path = $this->pluginPath . 'code/views/' . $name . '.php';
+    
+    if (!is_file($path)) {
+      return;
+    }
+
+    if(!$obClean) {
+      include $path;
+
+      return;
+    }
+
+    //I know it sucks, but...
+    $__HTML = ob_get_clean();
+    $output = '';
+
+    if (is_file($path)) {
+      ob_start();
+      
+      include $path;
+
+      $output = ob_get_clean();
+    }
+
+    ob_start();
+    echo $__HTML;
+
+    return $output;
+  }
+
+  public function getPluginPath(?string $subPath = null): string
   {
     $basePath = $this->pluginPath;
 

@@ -6,7 +6,7 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 namespace WCPoczta\Code\Components;
@@ -20,7 +20,7 @@ final class Poczta extends ShippingMethod
 
   public const DEFAULT_FREE = 200;
 
-  public const DEFAULT_WEIGHT = 20;
+  public const WEIGHT_LIMIT = 25;
 
   public function initialize()
   {
@@ -82,11 +82,18 @@ final class Poczta extends ShippingMethod
       ]
     ]);
 
+    $this->addSetting('weight_limit', [
+      'type' => 'number',
+      'title' => __('Weight limit', Bootstrap::DOMAIN),
+      'description' => __('Total weight limit, above which the shipping option will not show up.', Bootstrap::DOMAIN),
+      'default' => self::WEIGHT_LIMIT
+    ]);
+
     $this->addSetting('free_enable', [
       'type' => 'checkbox',
       'title' => __('Allow free shipping', Bootstrap::DOMAIN),
       'description' => __('If checked, it allows free shipping on the gross price listed below.', Bootstrap::DOMAIN),
-      'default' => 'yes'
+      'default' => 'no'
     ]);
 
     $this->addSetting('free_above', [
@@ -95,21 +102,21 @@ final class Poczta extends ShippingMethod
       'description' => sprintf(__('Default %s', Bootstrap::DOMAIN), wc_price(self::DEFAULT_FREE)),
       'default' => self::DEFAULT_FREE
     ]);
-
-    $this->addSetting('weight', [
-      'type' => 'number',
-      'title' => __('Weight (kg)', Bootstrap::DOMAIN),
-      'description' => sprintf(__('Maximum allowed weight (default is %skg)', Bootstrap::DOMAIN), self::DEFAULT_WEIGHT),
-      'default' => self::DEFAULT_WEIGHT
-    ]);
   }
 
-  public function calculateShipping()
+  public function calculateShipping($package = [])
   {
-    $methodPrice = $this->get_option('cost', self::DEFAULT_PRICE);
-    $totalWeight = $this->getCartWeight();
+    $weightLimit = (float) $this->get_option('weight_limit', self::WEIGHT_LIMIT);
+    $methodPrice = (float) $this->get_option('cost', self::DEFAULT_PRICE);
 
-    if ('yes' === $this->get_option('free_enable', 'yes') && $this->getCartTotal() >= (float) $this->get_option('free_above', self::DEFAULT_FREE)) {
+    $totalPrice = (float) $this->getCartTotal();
+    $totalWeight = (float) $this->getCartWeight($package);
+
+    if ($weightLimit > 1 && $totalWeight > $weightLimit) {
+      return; //Permitted weight exceeded
+    }
+
+    if ('yes' === $this->get_option('free_enable', 'yes') && $totalPrice >= (float) $this->get_option('free_above', self::DEFAULT_FREE)) {
       $methodPrice = 0;
     }
 

@@ -2,9 +2,11 @@
 # Leszek Pomianowski CC0
 
 # DATA
-$directories = @('code', 'languages')
+#$directories = @('code', 'languages', 'assets')
+#$files = @('wc-poczta.php', 'readme.txt', 'LICENSE')
+$directories = @('code', 'languages', 'assets')
 $files = @('wc-poczta.php', 'readme.txt', 'LICENSE')
-
+$exclude = @('*.scss', '*.po', 'wc-poczta.js', 'wc-poczta-admin.js')
 
 # INFO
 Write-Host "============================" -ForegroundColor White
@@ -25,7 +27,7 @@ if (Test-Path -Path $DIST_PATH) {
 
 foreach ($directory in $directories) {
   if (Test-Path -Path $ROOT_PATH$directory) {
-    Copy-Item "$ROOT_PATH$directory" -Destination "$DIST_PATH$directory" -Recurse -Force
+    Copy-Item "$ROOT_PATH$directory" -Destination "$DIST_PATH$directory" -Recurse -Force -Exclude $exclude
     Write-Host "[OK] " -ForegroundColor Green -NoNewline
   } else {
     Write-Host "[ER] " -ForegroundColor Red -NoNewline
@@ -39,7 +41,7 @@ foreach ($directory in $directories) {
 
 foreach ($file in $files) {
   if (-not(Test-Path -Path $file -PathType Leaf)) {
-    Write-Host "[ER] " -ForegroundColor Red -NoNewline -Force
+    Write-Host "[ER] " -ForegroundColor Red -NoNewline
   } else {
     Copy-Item "$ROOT_PATH$file" -Destination "$DIST_PATH$file" -Force
     Write-Host "[OK] " -ForegroundColor Green -NoNewline
@@ -49,6 +51,12 @@ foreach ($file in $files) {
   Write-Host $ROOT_PATH$file -NoNewline
   Write-Host ", to: " -ForegroundColor White -NoNewline
   Write-Host $DIST_PATH$file
+}
+
+Write-Host ""
+Write-Host "Excluded: " -ForegroundColor White
+foreach ($excluded in $exclude) {
+  Write-Host " - "$excluded
 }
 
 # Write-Host ""

@@ -4,10 +4,10 @@
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
  * @link       https://rdev.cc/
- * @license    MPL-2.0 https://opensource.org/licenses/MPL-2.0
+ * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  *
  * @see https://docs.inpost24.com/pages/viewpage.action?pageId=7798862
- * @see https://odbiorwpunkcie.poczta-polska.pl/wp-content/uploads/2020/05/Instrukcja-integracji-05_2020.pdf
+ * @see https://odbiorwpunkcie.poczta-polska.pl/wp-content/uploads/2021/06/INSTRUKCJA-INTEGRACJI-06_2021.pdf
  */
 
 class WC_POCZTA {
@@ -88,7 +88,7 @@ class WC_POCZTA {
       returnAddress += " " + shipping.city;
     }
 
-    return returnAddress;
+    return returnAddress.trim();
   }
 
   static showEasyPack(dataset) {
@@ -108,13 +108,17 @@ class WC_POCZTA {
     }
 
     easyPack.init({
+      instance: "pl",
       defaultLocale: "pl",
       mapType: "osm",
       searchType: "osm",
       langSelection: false,
       filters: false,
       apiEndpoint: "https://api-pl-points.easypack24.net/v1",
-      display: { showTypesFilters: false, showSearchBar: true },
+      display: {
+        showTypesFilters: false,
+        showSearchBar: true,
+      },
       points: {
         types: pPoints,
       },
@@ -122,9 +126,12 @@ class WC_POCZTA {
         initialTypes: pPoints,
         useGeolocation: pGeolocation,
       },
+      customMapAndListInRow: {
+        enabled: false,
+      },
     });
 
-    easyPack.modalMap(
+    let easyPackMap = easyPack.modalMap(
       function (point, modal) {
         modal.closeModal();
         WC_POCZTA.updateInputData(
@@ -138,8 +145,18 @@ class WC_POCZTA {
           point.address_details.province
         );
       },
-      { width: 500, height: 600 }
+      { width: 1000, height: 600 }
     );
+
+    let address = WC_POCZTA.getAddress();
+    if (address.length > 1) {
+      easyPackMap.searchPlace(WC_POCZTA.getAddress());
+    }
+
+    let modal = document.querySelector("#widget-modal");
+    if (modal) {
+      modal.parentNode.classList.add("wc-poczta__easypack-map");
+    }
   }
 
   static showPoczta(dataset) {
@@ -150,12 +167,22 @@ class WC_POCZTA {
       pPoints = ["POCZTA", "ZABKA", "RUCH"];
     }
 
-    PPWidgetApp.toggleMap({
-      callback: WC_POCZTA.callbackPoczta,
-      payOnPickup: !1,
-      address: WC_POCZTA.getAddress(),
-      type: pPoints,
-    });
+    let searchAddress = WC_POCZTA.getAddress();
+
+    if (searchAddress.length > 1) {
+      PPWidgetApp.toggleMap({
+        callback: WC_POCZTA.callbackPoczta,
+        payOnPickup: !1,
+        address: searchAddress,
+        type: pPoints,
+      });
+    } else {
+      PPWidgetApp.toggleMap({
+        callback: WC_POCZTA.callbackPoczta,
+        payOnPickup: !1,
+        type: pPoints,
+      });
+    }
   }
 
   static callbackPoczta(data) {
