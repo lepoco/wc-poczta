@@ -67,7 +67,7 @@ final class Actions
   public function upgradeNotice($data, $response)
   {
     if (isset($response->upgrade_notice) && strlen(trim($response->upgrade_notice)) > 0) {
-      echo '<br><span class="wc-poczta__update" style="color: #d54e21"><strong>' . __('Important Upgrade Notice', Bootstrap::DOMAIN) . ':</strong><br>' . esc_html($response->upgrade_notice) . '</span>';
+      echo '<br><span class="wc-poczta__update" style="color: #d54e21"><strong>' . __('Important Upgrade Notice', Bootstrap::DOMAIN) . ':</strong><br>' . strip_tags($response->upgrade_notice) . '</span>';
     }
   }
 

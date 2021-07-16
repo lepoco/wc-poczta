@@ -39,7 +39,7 @@ if (version_compare(PHP_VERSION, '7.4.1') >= 0) {
   require_once $pluginPath . 'code/core/' . 'Actions.php';
   require_once $pluginPath . 'code/core/' . 'ShippingRegistrar.php';
 
-  \WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.3.156');
+  \WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.3.163');
 } else {
   add_action('admin_notices', function () {
     echo '<div class="notice notice-error"><p><strong>WC Poczta</strong><br>WC Poczta requires a minimum PHP version of 7.4.1. Your site uses ' . PHP_VERSION . '. You need to update your server if you want to use this plugin.<br/><a target="_blank" rel="noopener" href="https://wordpress.org/support/update-php/">Get a faster, more secure website: update your PHP today</a></p></div>';
