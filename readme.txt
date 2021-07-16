@@ -1,7 +1,7 @@
 === Self Pickup with WooCommerce - InPost Paczkomaty, Polish Post, Żabka and Ruch ===
 Contributors: RapidDev
 Donate link: https://www.paypal.com/paypalme/devcc
-Tags: e-commerce, paczkomaty, inpost, poczta, polska, żabka, odbior, punkcie, ruch, orlen, woocommerce
+Tags: e-commerce, paczkomaty, inpost, poczta, polska, żabka, email, punkcie, ruch, orlen, woocommerce
 Requires at least: 5.0.0
 Tested up to: 5.8.0
 Requires PHP: 7.4.1
@@ -19,6 +19,7 @@ Our plugin is free, flexible, and developed together with the community, thanks 
 
 - **Add a interactive map of pickup points** available both for parcel machines and collection points in many shops and post offices.
 - **Allow free shipping** which is available in the default options, just set the amount.
+- **Notify by email** information about the selected pickup point will appear in order summary and in the e-mail notification.
 - **Customize options** using the add shipping creator. You can change names, amounts, weights, specific types of pickup points and more.
 - **Give your customers the convenience** of using modern solutions without compromises.
 

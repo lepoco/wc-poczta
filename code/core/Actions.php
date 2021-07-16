@@ -303,7 +303,9 @@ final class Actions
 
       $html .= '<p><strong>' . __('Pickup point', Bootstrap::DOMAIN) . ':</strong> ' . get_post_meta($orderId, '_wcpoczta_name', true);
       $html .= '<br><strong>' . __('Phone', Bootstrap::DOMAIN) . ':</strong> ' . $order->get_billing_phone();
-      $html .= '<br><strong>' . __('Weight', Bootstrap::DOMAIN) . ':</strong> ' . ($weight > 0 ? $weight . ' ' . get_option('woocommerce_weight_unit') : __('Unknown', Bootstrap::DOMAIN));
+      if($weight > 0) {
+        $html .= '<br><strong>' . __('Weight', Bootstrap::DOMAIN) . ':</strong> ' . $weight . ' ' . get_option('woocommerce_weight_unit');
+      }
       $html .= '</p>';
 
       $html .= '<p><strong>' . __('Pickup point address', Bootstrap::DOMAIN) . ':</strong>';
