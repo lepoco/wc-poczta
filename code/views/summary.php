@@ -111,7 +111,7 @@ $displayData = [
   </div>
 
   <div class="wc-poczta-order__footer">
-    WC POCZTA - <a target="_blank" rel="noopener" href="https://lepo.co/">rdev.cc/</a>
+    WC POCZTA - <a target="_blank" rel="noopener" href="https://lepo.co/">lepo.co/</a>
   </div>
 
 </div>

@@ -27,7 +27,7 @@ final class Bootstrap
 
   public const COMPONENTS_NAMESPACE = '\\WCPoczta\\Code\\Components\\';
 
-  public const CONTACT_NAME = 'rdev.cc/contact';
+  public const CONTACT_NAME = 'lepo.co/contact';
 
   public const CONTACT_ADDRESS = 'https://lepo.co/contact';
 
