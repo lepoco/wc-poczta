@@ -16,7 +16,7 @@
  * Author URI: https://lepo.co/
  * License: GPL-3.0
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- * Version: 1.3.2
+ * Version: 1.3.3
  * Text Domain: wc_poczta
  * Domain Path: /languages
  * 
@@ -31,14 +31,16 @@ defined('ABSPATH') or die('No script kiddies please!');
 if (version_compare(PHP_VERSION, '7.4.1') >= 0) {
   $pluginPath = plugin_dir_path(__FILE__);
 
-  if (defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor\\autoload.php')) {
-    require_once $pluginPath . 'vendor\\autoload.php';
+  if (defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php')) {
+    require_once $pluginPath . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
   }
 
-  require_once $pluginPath . 'code\\core\\' . 'Helpers.php';
-  require_once $pluginPath . 'code\\core\\' . 'Bootstrap.php';
-  require_once $pluginPath . 'code\\core\\' . 'Actions.php';
-  require_once $pluginPath . 'code\\core\\' . 'ShippingRegistrar.php';
+  $corePath = 'code' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR;
+
+  require_once $pluginPath . $corePath . 'Helpers.php';
+  require_once $pluginPath . $corePath . 'Bootstrap.php';
+  require_once $pluginPath . $corePath . 'Actions.php';
+  require_once $pluginPath . $corePath . 'ShippingRegistrar.php';
 
   \WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.3.194');
 } else {
