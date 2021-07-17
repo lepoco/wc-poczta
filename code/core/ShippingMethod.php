@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://rdev.cc/
+ * @link       https://lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -55,6 +55,7 @@ abstract class ShippingMethod extends WC_Shipping_Method
         ]
       );
 
+      Bootstrap::log('No shipping rate added', ['method' => 'ShippingMethod::calculate_shipping', 'method' => $this->title]);
       return;
     }
 

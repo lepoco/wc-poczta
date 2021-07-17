@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://rdev.cc/
+ * @link       https://lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -36,7 +36,23 @@ final class ShippingRegistrar
   public function wooInitMethod(): void
   {
     if (!class_exists(Bootstrap::SHIPPING_NAMESPACE)) {
-      require_once $this->bootstrap->getPluginPath(Bootstrap::SHIPPING_PATH);
+      $parentPath = $this->bootstrap->getPluginPath(Bootstrap::SHIPPING_PATH);
+
+      if (!is_file($parentPath)) {
+        Bootstrap::log('Class creating the shipping method could not be found.', ['method' => 'ShippingRegistrar::wooInitMethod', 'shipping' => $this->methodName, 'pathSearched' => $parentPath]);
+
+        return;
+      }
+
+      require_once $parentPath;
+    }
+
+    $methodPath = $this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $this->methodName . '.php');
+
+    if (!is_file($methodPath)) {
+      Bootstrap::log('Shipping method class could not be found.', ['method' => 'ShippingRegistrar::wooInitMethod', 'shipping' => $this->methodName, 'pathSearched' => $methodPath]);
+
+      return;
     }
 
     require_once $this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $this->methodName . '.php');
@@ -44,7 +60,12 @@ final class ShippingRegistrar
 
   public function wooAddMethod(?array $methods): array
   {
-    $methods[$this->methodId] = $this->methodClassName;
+    if (class_exists($this->methodClassName)) {
+      $methods[$this->methodId] = $this->methodClassName;
+    } else {
+      Bootstrap::log('Shipping method could not be added.', ['method' => 'ShippingRegistrar::wooAddMethod', 'shippingId' => $this->methodId, 'shippingClass' => $this->methodName]);
+    }
+
     return $methods;
   }
 
@@ -65,7 +86,11 @@ final class ShippingRegistrar
 
   protected function registerMethod(string $name): bool
   {
-    if (!is_file($this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $name . '.php'))) {
+    $methodPath = $this->bootstrap->getPluginPath(Bootstrap::COMPONENTS_PATH . $name . '.php');
+
+    if (!is_file($methodPath)) {
+      Bootstrap::log('Shipping method could not be registered.', ['method' => 'ShippingRegistrar::registerMethod', 'shippingName' => $name, 'pathSearched' => $methodPath]);
+
       return false;
     }
 

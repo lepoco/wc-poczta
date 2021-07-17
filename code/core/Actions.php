@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://rdev.cc/
+ * @link       https://lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -16,11 +16,11 @@ use WC_Order;
 
 final class Actions
 {
-  private $bootstrap = null;
+  private ?Bootstrap $bootstrap = null;
 
-  private $methods = [];
+  private array $methods = [];
 
-  private $methodsIds = [];
+  private array $methodsIds = [];
 
   public static function initialize($bootstrap, $methods): self
   {
@@ -121,7 +121,7 @@ final class Actions
     }
 
     echo '<script type="text/javascript">const WCPOCZTA = ' . json_encode([
-      'uri' => 'https://rdev.cc/',
+      'uri' => 'https://lepo.co/',
       'prefix' => Bootstrap::PREFIX,
       'domain' => Bootstrap::DOMAIN,
       'version' => $this->bootstrap->getVersion(),

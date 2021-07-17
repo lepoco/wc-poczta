@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://rdev.cc/
+ * @link       https://lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -29,7 +29,7 @@ final class Bootstrap
 
   public const CONTACT_NAME = 'rdev.cc/contact';
 
-  public const CONTACT_ADDRESS = 'https://rdev.cc/contact';
+  public const CONTACT_ADDRESS = 'https://lepo.co/contact';
 
   private $version = '';
 
@@ -50,10 +50,7 @@ final class Bootstrap
   public function getPluginAsset(?string $assetPath = null): string
   {
     $pluginUrl = $this->getPluginUrl();
-
-    if (strpos('/', $pluginUrl, 0) === 0) {
-      $pluginUrl .= '/';
-    }
+    $pluginUrl = rtrim($pluginUrl, '/') . '/';
 
     return $pluginUrl . 'assets/' . $assetPath;
   }
@@ -63,13 +60,13 @@ final class Bootstrap
    */
   public function getPluginView(string $name, array $data = [], bool $obClean = false)
   {
-    $path = $this->pluginPath . 'code/views/' . $name . '.php';
-    
+    $path = Helpers::getAbsolutePath($this->pluginPath . 'code\\views\\' . $name . '.php');
+
     if (!is_file($path)) {
       return;
     }
 
-    if(!$obClean) {
+    if (!$obClean) {
       include $path;
 
       return;
@@ -81,7 +78,7 @@ final class Bootstrap
 
     if (is_file($path)) {
       ob_start();
-      
+
       include $path;
 
       $output = ob_get_clean();
@@ -101,11 +98,7 @@ final class Bootstrap
       return $basePath;
     }
 
-    if (strpos('/', $basePath, 0) === 0) {
-      $basePath .= '/';
-    }
-
-    return $basePath . $subPath;
+    return Helpers::getAbsolutePath(rtrim($basePath, '\\') . '\\' . $subPath);
   }
 
   public function getPluginUrl(): ?string
@@ -140,6 +133,28 @@ final class Bootstrap
     return implode('_', $ret);
   }
 
+  public static function log(string $message, array $data = []): void
+  {
+    if (function_exists('write_log')) {
+      return;
+    }
+
+    $printData = '';
+    $c = 0;
+
+    foreach ($data as $key => $value) {
+      if (!is_array($value)) {
+        $printData .= ($c++ > 0 ? ', ' : '') . "'$key': '$value'";
+      }
+    }
+
+    if (!empty($printData)) {
+      $printData = ' [' . $printData . ']';
+    }
+
+    error_log('WC POCZTA: ' . $message . $printData);
+  }
+
   private function initialize(?string $pluginPath, ?string $pluginUrl, ?string $version = null): self
   {
     $this->pluginPath = $pluginPath;
@@ -165,7 +180,18 @@ final class Bootstrap
 
   private function setupMethods(): void
   {
-    $methods = array_diff(scandir($this->getPluginPath(self::COMPONENTS_PATH)), ['.', '..']);
+    $methodsPath = $this->getPluginPath(self::COMPONENTS_PATH);
+
+    if (!is_dir($methodsPath)) {
+      self::log('The shipping method directory could not be found.', ['method' => 'Bootstrap::setupMethods', 'pathSearched' => $methodsPath]);
+      add_action('admin_notices', function () {
+        echo '<div class="notice notice-error"><p><strong>WC Poczta</strong><br>' . __('The shipping method directory could not be found. The directory may not exist, or the error may be due to an incompatible server.', Bootstrap::DOMAIN) . '</p></div>';
+      }, 20);
+      return;
+    }
+
+    $methodsDir = scandir($this->getPluginPath(self::COMPONENTS_PATH));
+    $methods = array_diff($methodsDir, ['.', '..']);
 
     foreach ($methods as $method) {
       if ('.php' === substr($method, -4)) {

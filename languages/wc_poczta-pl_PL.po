@@ -917,8 +917,8 @@ msgid "Leszek Pomianowski"
 msgstr "Leszek Pomianowski"
 
 #. Author URI of the plugin/theme
-msgid "https://rdev.cc/"
-msgstr "https://rdev.cc/"
+msgid "https://lepo.co/"
+msgstr "https://lepo.co/"
 
 #, php-format
 #~ msgid "Cost (Dimensions %s)"
