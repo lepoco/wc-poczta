@@ -102,6 +102,13 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= 1.3.2 =
+1. Added error logging to debug.log
+2. Fixes with detection of directories and files
+
+= 1.3.1 =
+1. Bug fixes in sending e-mails
+
 = 1.3.0 =
 1. Fixing the weight limit
 2. Correct the display of pickup point in order summary
@@ -129,6 +136,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 1. The plugin was created
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+Added error logging to debug.log and fixes with detection of directories and files
 
 = 1.3.0 =
 Fixing the weight limit and add custom e-mail fields.
