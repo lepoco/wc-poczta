@@ -19,11 +19,11 @@ final class Bootstrap
 
   public const PREFIX = 'wc_poczta_';
 
-  public const SHIPPING_PATH = 'code\\core\\ShippingMethod.php';
+  public const SHIPPING_PATH = 'code/core/ShippingMethod.php';
 
   public const SHIPPING_NAMESPACE = '\\WCPoczta\\Code\\Core\\ShippingMethod';
 
-  public const COMPONENTS_PATH = 'code\\components\\';
+  public const COMPONENTS_PATH = 'code/components/';
 
   public const COMPONENTS_NAMESPACE = '\\WCPoczta\\Code\\Components\\';
 
@@ -60,7 +60,7 @@ final class Bootstrap
    */
   public function getPluginView(string $name, array $data = [], bool $obClean = false)
   {
-    $path = Helpers::getAbsolutePath($this->pluginPath . 'code\\views\\' . $name . '.php');
+    $path = Helpers::getAbsolutePath($this->pluginPath . 'code' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $name . '.php');
 
     if (!is_file($path)) {
       return;
@@ -98,7 +98,7 @@ final class Bootstrap
       return $basePath;
     }
 
-    return Helpers::getAbsolutePath(rtrim($basePath, '\\') . '\\' . $subPath);
+    return Helpers::getAbsolutePath(rtrim($basePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $subPath);
   }
 
   public function getPluginUrl(): ?string
