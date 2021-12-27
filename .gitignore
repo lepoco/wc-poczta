@@ -1,13 +1,19 @@
-##### OLD Files
+# Depracted files
 _old/
+.old/
+.depracted/
 
-##### SVN
+# SVN
 .svn/
 .subversion/
 SVN/
 _SVN/
 
-##### Windows
+# VS Code
+.vscode/
+.vs/
+
+# Windows
 # Windows thumbnail cache files
 Thumbs.db
 Thumbs.db:encryptable
