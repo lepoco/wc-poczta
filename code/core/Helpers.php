@@ -1,21 +1,20 @@
 <?php
 
-/**
- * @package    WordPress
- * @subpackage WC Poczta - Self Pickup with WooCommerce
- *
- * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
- * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
- */
-
 namespace WCPoczta\Code\Core;
 
+/**
+ * A set of useful shortcuts.
+ *
+ * @author    Leszek Pomianowski <kontakt@rapiddev.pl>
+ * @copyright 2021 Leszek Pomianowski
+ * @license   GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
+ * @link      https://dev.lepo.co/
+ */
 final class Helpers
 {
   /**
    * Align the directory path
-   * 
+   *
    * There is a method that deal with Sven Arduwie proposal
    * @see https://www.php.net/manual/en/function.realpath.php#84012
    * And runeimp at gmail dot com proposal

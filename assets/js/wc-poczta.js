@@ -3,24 +3,16 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
+ * @link       https://dev.lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  *
  * @see https://docs.inpost24.com/pages/viewpage.action?pageId=7798862
  * @see https://odbiorwpunkcie.poczta-polska.pl/wp-content/uploads/2021/06/INSTRUKCJA-INTEGRACJI-06_2021.pdf
+ * @see https://www.orlenpaczka.pl/wp-content/uploads/2021/08/API_ORLENPaczka_v_1-16-005_A.pdf
  */
 
 class WC_POCZTA {
   constructor() {
-    if (this.constructor !== WC_POCZTA) {
-      throw new Error("Subclassing is not allowed");
-    }
-    const WC_BUTTON = document.querySelector(".wc-poczta__button");
-
-    if (!WC_BUTTON) {
-      return;
-    }
-
     document.addEventListener("click", function (e) {
       if (e.target && e.target.classList.contains("wc-poczta__button")) {
         e.preventDefault();
@@ -42,6 +34,10 @@ class WC_POCZTA {
 
     if (DATASET.method == "wc_poczta_poczta") {
       WC_POCZTA.showPoczta(DATASET);
+    }
+
+    if (DATASET.method == "wc_poczta_orlen_paczka") {
+      WC_POCZTA.showOrlen(DATASET);
     }
   }
 
@@ -183,6 +179,10 @@ class WC_POCZTA {
         type: pPoints,
       });
     }
+  }
+
+  static showOrlen(dataset) {
+
   }
 
   static callbackPoczta(data) {

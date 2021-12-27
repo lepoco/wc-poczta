@@ -1,20 +1,19 @@
 <?php
 
-/**
- * @package    WordPress
- * @subpackage WC Poczta - Self Pickup with WooCommerce
- *
- * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
- * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
- */
-
 namespace WCPoczta\Code\Components;
 
 use WCPoczta\Code\Core\Bootstrap;
 use WCPoczta\Code\Core\ShippingMethod;
 
-final class EasyPack extends ShippingMethod
+/**
+ * Class containing the logic of the EasyPack shipping method.
+ *
+ * @author    Leszek Pomianowski <kontakt@rapiddev.pl>
+ * @copyright 2021 Leszek Pomianowski
+ * @license   GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
+ * @link      https://dev.lepo.co/
+ */
+final class EasyPack extends ShippingMethod implements \WCPoczta\Code\Schema\ShippingMethod
 {
   public const DEFAULT_PRICE_A = 9.39;
 
@@ -50,7 +49,33 @@ final class EasyPack extends ShippingMethod
     $this->registerSettings();
   }
 
-  private function registerSettings(): void
+  public function calculateShipping($package = []): void
+  {
+    $weightLimit = (float) $this->get_option('weight_limit', self::WEIGHT_LIMIT);
+    $methodPrice = (float) $this->get_option('cost', self::DEFAULT_PRICE_A);
+
+    $totalPrice = (float) $this->getCartTotal();
+    $totalWeight = (float) $this->getCartWeight($package);
+
+    if ($weightLimit > 0 && $totalWeight > $weightLimit) {
+      return; //Permitted weight exceeded
+    }
+
+    if ('yes' === $this->get_option('free_enable', 'yes') && $totalPrice >= (float) $this->get_option('free_above', self::DEFAULT_FREE)) {
+      $methodPrice = 0;
+    }
+
+    $this->add_rate(
+      [
+        'id' => $this->id,
+        'label' => $this->title,
+        'calc_tax'  => 'per_order',
+        'cost' => $methodPrice
+      ]
+    );
+  }
+
+  protected function registerSettings(): void
   {
     $this->addSetting('title', [
       'type' => 'text',
@@ -153,31 +178,5 @@ final class EasyPack extends ShippingMethod
       'default' => self::DEFAULT_DIMENSIONS_C,
       'disabled' => true
     ]);
-  }
-
-  public function calculateShipping($package = [])
-  {
-    $weightLimit = (float) $this->get_option('weight_limit', self::WEIGHT_LIMIT);
-    $methodPrice = (float) $this->get_option('cost', self::DEFAULT_PRICE_A);
-
-    $totalPrice = (float) $this->getCartTotal();
-    $totalWeight = (float) $this->getCartWeight($package);
-
-    if ($weightLimit > 0 && $totalWeight > $weightLimit) {
-      return; //Permitted weight exceeded
-    }
-
-    if ('yes' === $this->get_option('free_enable', 'yes') && $totalPrice >= (float) $this->get_option('free_above', self::DEFAULT_FREE)) {
-      $methodPrice = 0;
-    }
-
-    $this->add_rate(
-      [
-        'id' => $this->id,
-        'label' => $this->title,
-        'calc_tax'  => 'per_order',
-        'cost' => $methodPrice
-      ]
-    );
   }
 }

@@ -1,19 +1,18 @@
 <?php
 
-/**
- * @package    WordPress
- * @subpackage WC Poczta - Self Pickup with WooCommerce
- *
- * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
- * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
- */
-
 namespace WCPoczta\Code\Core;
 
 use WP_Post;
 use WC_Order;
 
+/**
+ * Registers all filters and actions in the WordPress core.
+ *
+ * @author    Leszek Pomianowski <kontakt@rapiddev.pl>
+ * @copyright 2021 Leszek Pomianowski
+ * @license   GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
+ * @link      https://dev.lepo.co/
+ */
 final class Actions
 {
   private ?Bootstrap $bootstrap = null;
@@ -303,7 +302,7 @@ final class Actions
 
       $html .= '<p><strong>' . __('Pickup point', Bootstrap::DOMAIN) . ':</strong> ' . get_post_meta($orderId, '_wcpoczta_name', true);
       $html .= '<br><strong>' . __('Phone', Bootstrap::DOMAIN) . ':</strong> ' . $order->get_billing_phone();
-      if($weight > 0) {
+      if ($weight > 0) {
         $html .= '<br><strong>' . __('Weight', Bootstrap::DOMAIN) . ':</strong> ' . $weight . ' ' . get_option('woocommerce_weight_unit');
       }
       $html .= '</p>';

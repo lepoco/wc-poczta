@@ -6,14 +6,17 @@ use WCPoczta\Code\Core\Bootstrap;
 use WCPoczta\Code\Core\ShippingMethod;
 
 /**
- * Class containing the logic of the Poczta Polska shipping method.
+ * Class containing the logic of the OrlenPaczka shipping method.
  *
  * @author    Leszek Pomianowski <kontakt@rapiddev.pl>
  * @copyright 2021 Leszek Pomianowski
  * @license   GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  * @link      https://dev.lepo.co/
+ * @see https://www.orlenpaczka.pl/
+ * @see https://www.orlenpaczka.pl/wp-content/themes/orlenpaczka/files/Instrukcja_Manager%20ORLEN%20Paczka.pdf
+ * @see https://www.orlenpaczka.pl/wp-content/uploads/2021/10/API_ORLENPaczka_v_1-16-007_A.pdf
  */
-final class Poczta extends ShippingMethod implements \WCPoczta\Code\Schema\ShippingMethod
+final class OrlenPaczka extends ShippingMethod implements \WCPoczta\Code\Schema\ShippingMethod
 {
   public const DEFAULT_PRICE = 11.99;
 
@@ -23,8 +26,8 @@ final class Poczta extends ShippingMethod implements \WCPoczta\Code\Schema\Shipp
 
   public function initialize(): void
   {
-    $this->setTitle(__('Self Pickup - Polish Post', Bootstrap::DOMAIN));
-    $this->setDescription(__('Pickup at Żabka, Orlen, Biedronka, Ruch and Poczta Polska', Bootstrap::DOMAIN));
+    $this->setTitle(__('Self Pickup - Orlen Paczka', Bootstrap::DOMAIN));
+    $this->setDescription(__('Pickup at Orlen fuel stations', Bootstrap::DOMAIN));
 
     $this->setSupports([
       'shipping-zones',
@@ -71,7 +74,7 @@ final class Poczta extends ShippingMethod implements \WCPoczta\Code\Schema\Shipp
       'type' => 'text',
       'title' => __('Title', Bootstrap::DOMAIN),
       'description' => __('Title displayed when you select a shipping option.', Bootstrap::DOMAIN),
-      'default' => __('Self Pickup - Polish Post', Bootstrap::DOMAIN)
+      'default' => __('Self Pickup - Orlen Paczka', Bootstrap::DOMAIN)
     ]);
 
     $this->addSetting('cost', [

@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
+ * @link       https://dev.lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  *
  * @wc-poczta
@@ -16,12 +16,12 @@
  * Author URI: https://lepo.co/
  * License: GPL-3.0
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- * Version: 1.3.4
+ * Version: 1.4.0
  * Text Domain: wc_poczta
  * Domain Path: /languages
- * 
+ *
  * WC requires at least: 5.0.0
- * WC tested up to: 5.5.1
+ * WC tested up to: 5.8.1
  */
 
 namespace WCPoczta;
@@ -31,20 +31,24 @@ defined('ABSPATH') or die('No script kiddies please!');
 if (version_compare(PHP_VERSION, '7.4.1') >= 0) {
   $pluginPath = plugin_dir_path(__FILE__);
 
-  if (defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php')) {
-    require_once $pluginPath . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+  if (defined('WP_DEBUG') && WP_DEBUG && is_file($pluginPath . 'vendor/autoload.php')) {
+    require_once $pluginPath . 'vendor/autoload.php';
   }
 
-  $corePath = 'code' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR;
+  require_once $pluginPath . 'code/schema/' . 'ShippingMethod.php';
+  require_once $pluginPath . 'code/core/' . 'Helpers.php';
+  require_once $pluginPath . 'code/core/' . 'Bootstrap.php';
+  require_once $pluginPath . 'code/core/' . 'Actions.php';
+  require_once $pluginPath . 'code/core/' . 'ShippingRegistrar.php';
 
-  require_once $pluginPath . $corePath . 'Helpers.php';
-  require_once $pluginPath . $corePath . 'Bootstrap.php';
-  require_once $pluginPath . $corePath . 'Actions.php';
-  require_once $pluginPath . $corePath . 'ShippingRegistrar.php';
-
-  \WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.3.4');
+  \WCPoczta\Code\Core\Bootstrap::init($pluginPath, plugin_dir_url(__FILE__), '1.3.6');
 } else {
   add_action('admin_notices', function () {
-    echo '<div class="notice notice-error"><p><strong>WC Poczta</strong><br>WC Poczta requires a minimum PHP version of 7.4.1. Your site uses ' . PHP_VERSION . '. You need to update your server if you want to use this plugin.<br/><a target="_blank" rel="noopener" href="https://wordpress.org/support/update-php/">Get a faster, more secure website: update your PHP today</a></p></div>';
+    $html = '<div class="notice notice-error"><p>';
+    $html .= '<strong>WC Poczta</strong><br>WC Poczta requires a minimum PHP version of 7.4.1. Your site uses ' . PHP_VERSION . '. You need to update your server if you want to use this plugin.<br/>';
+    $html .= '<a target="_blank" rel="noopener" href="https://wordpress.org/support/update-php/">Get a faster, more secure website: update your PHP today</a>';
+    $html .= '</p></div>';
+
+    echo $html;
   }, 20);
 }

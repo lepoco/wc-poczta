@@ -3,7 +3,7 @@ Contributors: RapidDev
 Donate link: https://www.paypal.com/paypalme/devcc
 Tags: e-commerce, paczkomaty, inpost, poczta, polska, żabka, email, punkcie, ruch, orlen, woocommerce
 Requires at least: 5.0.0
-Tested up to: 5.8.0
+Tested up to: 5.8.1
 Requires PHP: 7.4.1
 Stable tag: trunk
 License: GPL-3.0
@@ -102,6 +102,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= 1.4.0 =
+1. Class refactoring
+
+= 1.3.5 =
+1. Fixed bug with JavaScript constructor
+
+= 1.3.4 =
+1. Further fixes with detection of directories and files
+
+= 1.3.3 =
+1. Further fixes with detection of directories and files
+
 = 1.3.2 =
 1. Added error logging to debug.log
 2. Fixes with detection of directories and files
@@ -137,8 +149,11 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Upgrade Notice ==
 
+= 1.3.5 =
+Fixed bug with JavaScript constructor.
+
 = 1.3.2 =
-Added error logging to debug.log and fixes with detection of directories and files
+Added error logging to debug.log and fixes with detection of directories and files.
 
 = 1.3.0 =
 Fixing the weight limit and add custom e-mail fields.

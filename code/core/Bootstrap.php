@@ -1,16 +1,15 @@
 <?php
 
-/**
- * @package    WordPress
- * @subpackage WC Poczta - Self Pickup with WooCommerce
- *
- * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
- * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
- */
-
 namespace WCPoczta\Code\Core;
 
+/**
+ * Main class of the plugin responsible for registering all functionalities.
+ *
+ * @author    Leszek Pomianowski <kontakt@rapiddev.pl>
+ * @copyright 2021 Leszek Pomianowski
+ * @license   GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
+ * @link      https://dev.lepo.co/
+ */
 final class Bootstrap
 {
   public const SLUG = 'wc-poczta';
@@ -27,9 +26,9 @@ final class Bootstrap
 
   public const COMPONENTS_NAMESPACE = '\\WCPoczta\\Code\\Components\\';
 
-  public const CONTACT_NAME = 'lepo.co/contact';
+  public const CONTACT_NAME = 'dev.lepo.co/contact';
 
-  public const CONTACT_ADDRESS = 'https://lepo.co/contact';
+  public const CONTACT_ADDRESS = 'https://dev.lepo.co/contact';
 
   private $version = '';
 
@@ -39,6 +38,9 @@ final class Bootstrap
 
   private $objects = [];
 
+  /**
+   * Gets plugin basename obtained using WP functions.
+   */
   public function getPluginBasename(): string
   {
     return basename($this->getPluginPath());

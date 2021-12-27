@@ -6,7 +6,7 @@
 #$files = @('wc-poczta.php', 'readme.txt', 'LICENSE')
 $directories = @('code', 'languages', 'assets')
 $files = @('wc-poczta.php', 'readme.txt', 'LICENSE')
-$exclude = @('*.scss', '*.po', 'wc-poczta.js', 'wc-poczta-admin.js')
+$exclude = @('*.scss', '*.po')
 
 # INFO
 Write-Host "============================" -ForegroundColor White

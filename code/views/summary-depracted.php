@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
+ * @link       https://dev.lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -20,17 +20,17 @@ if ('easypack' === $data['type']) {
 
   if (false !== strpos($methodTypeLower, 'pok') || false !== strpos($methodTypeLower, 'pop')) {
     $logoImage = 'inpost-logo.svg';
-  } else if (false !== strpos($methodTypeLower, 'orlen')) {
+  } elseif (false !== strpos($methodTypeLower, 'orlen')) {
     $logoImage = 'orlen-logo.svg';
-  } else if (false !== strpos($methodTypeLower, 'zabka') || false !== strpos($methodTypeLower, 'żabka')) {
+  } elseif (false !== strpos($methodTypeLower, 'zabka') || false !== strpos($methodTypeLower, 'żabka')) {
     $logoImage = 'zabka-logo.svg';
-  } else if (false !== strpos($methodTypeLower, 'biedronka')) {
+  } elseif (false !== strpos($methodTypeLower, 'biedronka')) {
     $logoImage = 'biedronka-logo.png';
-  } else if (false !== strpos($methodTypeLower, 'ruch')) {
+  } elseif (false !== strpos($methodTypeLower, 'ruch')) {
     $logoImage = 'ruch-logo.png';
-  } else if (false !== strpos($methodTypeLower, 'abc')) {
+  } elseif (false !== strpos($methodTypeLower, 'abc')) {
     $logoImage = 'abc-logo.png';
-  } else if (false !== strpos($methodTypeLower, 'lewiatan')) {
+  } elseif (false !== strpos($methodTypeLower, 'lewiatan')) {
     $logoImage = 'lewiatan-logo.png';
   }
 }
@@ -130,11 +130,11 @@ if ('easypack' === $data['type']) {
   </div>
 
   <div class="wc-poczta-order__footer">
-    WC POCZTA - <a target="_blank" rel="noopener" href="https://lepo.co/">lepo.co/</a>
+    WC POCZTA - <a target="_blank" rel="noopener" href="https://dev.lepo.co/?reference=wc-poczta">dev.lepo.co/</a>
   </div>
 </div>
 
-<div class="wc-poczta-notice">
+<div class="wc-poczta-notice" style="border-top: 1px solid #c3c4c7;">
   <?php _e('Above information comes from the old plugin version. This data may disappear during future updates.', self::DOMAIN); ?>
   <br>
   <a href="https://wordpress.org/plugins/wc-poczta/">wordpress.org/plugins/wc-poczta</a>

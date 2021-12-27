@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
+ * @link       https://dev.lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -16,26 +16,23 @@ $methodTypeLower = strtolower($methodType);
 
 if (false !== strpos($methodTypeLower, 'pok') || false !== strpos($methodTypeLower, 'pop')) {
   $logoImage = 'inpost-logo.svg';
-} else if (false !== strpos($methodTypeLower, 'orlen')) {
+} elseif (false !== strpos($methodTypeLower, 'orlen')) {
   $logoImage = 'orlen-logo.svg';
-} else if (false !== strpos($methodTypeLower, 'zabka') || false !== strpos($methodTypeLower, 'żabka')) {
+} elseif (false !== strpos($methodTypeLower, 'zabka') || false !== strpos($methodTypeLower, 'żabka')) {
   $logoImage = 'zabka-logo.svg';
-} else if (false !== strpos($methodTypeLower, 'biedronka')) {
+} elseif (false !== strpos($methodTypeLower, 'biedronka')) {
   $logoImage = 'biedronka-logo.png';
-} else if (false !== strpos($methodTypeLower, 'ruch')) {
+} elseif (false !== strpos($methodTypeLower, 'ruch')) {
   $logoImage = 'ruch-logo.png';
-} else if (false !== strpos($methodTypeLower, 'abc')) {
+} elseif (false !== strpos($methodTypeLower, 'abc')) {
   $logoImage = 'abc-logo.png';
-} else if (false !== strpos($methodTypeLower, 'lewiatan')) {
+} elseif (false !== strpos($methodTypeLower, 'lewiatan')) {
   $logoImage = 'lewiatan-logo.png';
 }
 
 $logoImageUrl = $this->getPluginAsset('img/' . $logoImage);
 
 /** Data */
-
-
-
 $displayData = [
   'point'   => get_post_meta($data['post']->ID, '_wcpoczta_name', true),
   'phone'   => $data['order']->get_billing_phone(),
@@ -111,7 +108,7 @@ $displayData = [
   </div>
 
   <div class="wc-poczta-order__footer">
-    WC POCZTA - <a target="_blank" rel="noopener" href="https://lepo.co/">lepo.co/</a>
+    WC POCZTA - <a target="_blank" rel="noopener" href="https://dev.lepo.co/?reference=wc-poczta">dev.lepo.co/</a>
   </div>
 
 </div>

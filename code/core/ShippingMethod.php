@@ -14,11 +14,17 @@ namespace WCPoczta\Code\Core;
 use WC_Shipping_Method;
 use WCPoczta\Code\Core\Bootstrap;
 
-abstract class ShippingMethod extends WC_Shipping_Method
+abstract class ShippingMethod extends WC_Shipping_Method implements \WCPoczta\Code\Schema\ShippingMethod
 {
   public const ROOT_DEFAULT_PRICE = 11.99;
 
   private $settingsKeys = ['enabled', 'title', 'info'];
+
+  abstract public function initialize(): void;
+
+  abstract public function calculateShipping($package = []): void;
+
+  abstract protected function registerSettings(): void;
 
   public function __construct($instanceId = 0)
   {

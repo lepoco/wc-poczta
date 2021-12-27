@@ -5,7 +5,7 @@
  * @subpackage WC Poczta - Self Pickup with WooCommerce
  *
  * @copyright  Copyright (c) 2020-2021, Leszek Pomianowski
- * @link       https://lepo.co/
+ * @link       https://dev.lepo.co/
  * @license    GPL-3.0 https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -18,15 +18,15 @@
     <p><?php _e('You have chosen pickup as the shipping method. Your package will be delivered to the selected point:', self::DOMAIN); ?></p>
 
     <address>
-      <?php echo get_post_meta($data['id'], '_wcpoczta_name', true);?>
+      <?php echo get_post_meta($data['id'], '_wcpoczta_name', true); ?>
       <br>
       <br>
-      <?php echo get_post_meta($data['id'], '_wcpoczta_address', true);?>
+      <?php echo get_post_meta($data['id'], '_wcpoczta_address', true); ?>
       <br>
-      <?php echo get_post_meta($data['id'], '_wcpoczta_zipcode', true);?>
+      <?php echo get_post_meta($data['id'], '_wcpoczta_zipcode', true); ?>
       <br>
-      <?php echo get_post_meta($data['id'], '_wcpoczta_city', true);?>
-		</address>
+      <?php echo get_post_meta($data['id'], '_wcpoczta_city', true); ?>
+    </address>
 
   </div>
 </section>
