@@ -1,3 +1,4 @@
+![Banner](https://github.com/lepoco/wc-poczta/blob/main/.github/assets/banner-772x250.png?raw=true)
 # Self Pickup with WooCommerce
 [Created with ❤ in Poland by lepo.co](https://dev.lepo.co/)  
 WC Poczta is a popular open-source plug for easy self pickup which works for over a thousand online stores.
